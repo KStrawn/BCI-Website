@@ -1,0 +1,157 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>BCI Children Demo</title>
+	<meta name="description" content="BCI Children Demo">
+	<meta name="author" content="BCI">
+
+	<style>
+		body {
+			padding: 20px;
+			background-color: #D3D3D3
+		}
+
+		.child-row {
+			margin-bottom: 15px;
+			height: 410px;
+		}
+
+		.child {
+			width: 340px;
+			height: 410px;
+			background-color: white;
+			float: left;
+			margin-right: 15px;
+		}
+
+		.child-image {
+			width: 340px;
+			height: 296px;
+		}
+
+		.child-body {
+			padding: 3px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-left: 15px;
+            line-height: 3pt;
+		}
+
+		#show-more {
+			width: 250px;
+			height: 80px;
+			background-color: orange;
+			margin-top: 20px;
+			display: none;
+			font-size: 28pt;
+            font-weight: bold;
+            color: blue;
+		}
+	</style>
+</head>
+
+<body>
+	<h3>Children</h3>
+
+	<div id="child-list"></div>
+
+	<input type="button" value="Show More" id="show-more" />
+
+	<!-- Scripts -->
+	<script
+	  src="https://code.jquery.com/jquery-3.3.1.min.js"
+	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	  crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+
+	<script id="child-template" type="text/x-handlebars-template">
+		<div class="child">
+			<img src="{{WebPageUrl}}" class="child-image" />
+
+			<div class="child-body">
+                <h2>{{Title}}</h2>
+                
+				<p>I am {{Age}} years old</p>
+				<p>I am a {{GenderString}}</p>
+				<p>I've been waiting {{WaitingString}}</p>
+				<span style="display:none">'</span>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/javascript">
+
+		$(function() {
+			$.ajax({
+				type: 'GET',
+				url: 'https://bci-sharepointcall.azurewebsites.net/api/children',
+				dataType: 'jsonp',
+				jsonpCallback: 'receiveChildrenData'
+			});
+		});
+
+		function receiveChildrenData(children) {
+			var childTemplateSource = document.getElementById("child-template").innerHTML;
+			var template = Handlebars.compile(childTemplateSource);
+
+			children = children.sort(firstBy("Priority", -1).thenBy("SponsorshipNeeded", -1));
+			window.nextIndex = 0;
+            
+			appendNewRow(children, template);
+			$('#show-more').show();
+
+			$('#show-more').click(function() {
+				appendNewRow(children, template);
+			});
+		}
+
+		function appendNewRow(children, template) {
+			var htmlArray = [];
+
+			for (var i = 0; i < 3; i++) {
+				var child = calcData(children[nextIndex]);
+				htmlArray.push(template(child));
+				nextIndex++;
+			}
+
+			var newDiv = document.createElement("div");
+			newDiv.className = 'child-row';
+			newDiv.innerHTML = htmlArray.join('');
+
+			document.getElementById('child-list').appendChild(newDiv);
+		}
+
+		function calcData(child) {
+			child.Age = calculateAge(child.Birthday);
+			child.GenderString = child.Gender == 'Female' ? 'girl' : 'boy';
+			child.WaitingString = calculateWaiting(child.StartDate);
+			return child;
+		}
+
+		function calculateAge(birthday) {
+			var birthDate = new Date(birthday);
+		    var ageDifMs = Date.now() - birthDate.getTime();
+		    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+		    return Math.abs(ageDate.getUTCFullYear() - 1970);
+		}
+
+		function calculateWaiting(sinceDate) {
+			var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+			var firstDate = new Date(sinceDate);
+			var secondDate = Date.now();
+
+			var days = Math.round(Math.abs((firstDate.getTime() - secondDate)/(oneDay)));
+			if (days >= 365)
+				return 'more than a year';
+			return days + ' days';
+		}
+
+
+		// thenBy.js
+		/*** Copyright 2013 Teun Duynstee Licensed under the Apache License, Version 2.0 ***/
+		!function(n,t){"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?module.exports=t():n.firstBy=t()}(this,function(){var n=function(){function n(n){return n}function t(n){return"string"==typeof n?n.toLowerCase():n}function r(r,e){if(e="number"==typeof e?{direction:e}:e||{},"function"!=typeof r){var i=r;r=function(n){return n[i]?n[i]:""}}if(1===r.length){var o=r,f=e.ignoreCase?t:n,u=e.cmp||function(n,t){return n<t?-1:n>t?1:0};r=function(n,t){return u(f(o(n)),f(o(t)))}}return e.direction===-1?function(n,t){return-r(n,t)}:r}function e(n,t){var i="function"==typeof this&&!this.firstBy&&this,o=r(n,t),f=i?function(n,t){return i(n,t)||o(n,t)}:o;return f.thenBy=e,f}return e.firstBy=e,e}();return n});
+	</script>
+</body>
+</html>
