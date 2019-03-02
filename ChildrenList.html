@@ -96,7 +96,9 @@
 			var childTemplateSource = document.getElementById("child-template").innerHTML;
 			var template = Handlebars.compile(childTemplateSource);
 
-			children = children.sort(firstBy("Priority", -1).thenBy("SponsorshipNeeded", -1));
+			children = children.filter(function(c) { return c.ActiveForSponsorship && c.SponsorshipNeeded > 0; })
+				.sort(firstBy("Priority", -1).thenBy("SponsorshipNeeded", -1));
+			console.log(children);
 			window.nextIndex = 0;
             
 			appendNewRow(children, template);
