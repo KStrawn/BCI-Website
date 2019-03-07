@@ -55,6 +55,9 @@
 			font-size: 16px;
             font-weight: bold;
 			cursor: pointer;
+			border:        1px solid #35600b;
+			border-radius: 3px;
+			box-shadow:    1px 1px #444444;
 		}
 
 		.moreinfobutton:hover {
@@ -109,7 +112,7 @@
 			<div class="child-body">
                 <h2 style="font-family: 'Roboto Condensed', sans-serif;">{{Title}}</h2>
                 
-				<p>I am <b> {{Age}} </b> years old <span style="float:right;"><button class="moreinfobutton">Child Info...</button></span></p>
+				<p>I am <b> {{Age}} </b> years old <span style="float:right;"><a href="https://www.BlessingTheChildren.com"><button class="moreinfobutton">Child Info...</button></a></span></p>
 				<p>I am a <b> {{GenderString}} </b> </p>
 				<p>I've been waiting <b> {{WaitingString}}</b>
 				<span style="display:none">'</span>
