@@ -86,7 +86,9 @@
 
 <body>
 	<!--Start of Header-->
-	<section style="font-family: Arial; color: #ff0000; background-color: black; height: 48pt; padding: 5pt;"><img src="http://blessingthechildren.com/assets/images/new-logo-all-white-110x53.png" alt="logo" width="120" height="58" /></section>	
+	<section style="font-family: Arial; color: #ff0000; background-color: black; height: 48pt; padding: 5pt;"><img src="http://blessingthechildren.com/assets/images/new-logo-all-white-110x53.png" alt="logo" width="120" height="58" />
+	<span style="float:right;"><button onclick="goBack()">Close</button></span>
+	</section>	
 	<!--End of Header-->
 
 	<!--Start of body-->
@@ -106,6 +108,12 @@
 	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	  crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+
+	<script>
+	function goBack() {
+	window.history.back();
+	}
+	</script>
 
 	<script id="child-template" type="text/x-handlebars-template">
 		<div class="child">
