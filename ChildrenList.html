@@ -8,6 +8,8 @@
 	<meta name="description" content="BCI Children Demo">
 	<meta name="author" content="BCI">
 	<link href="https://fonts.googleapis.com/css?family=Reem+Kufi|Roboto|Roboto+Condensed" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 
 	<style>
 		body {
@@ -81,6 +83,33 @@
 			background-color: rgb(66, 68, 90);
 		}
 
+		#child-modal {
+		}
+
+		@media (min-width: 1300px) {
+			.modal-xl {
+				/*width: 90%;*/
+				max-width:1200px;
+			}
+		}
+
+		.child-modal-image {
+			height: 300px;
+			width: 200px;
+			float: left;
+			/*background-size: cover;*/
+		    background-repeat: no-repeat;
+		    background-position: center;
+		}
+
+		.child-modal-info {
+			margin-left: 200px;
+		}
+
+		.child-modal-info span {
+			display: block;
+		}
+
 	</style>
 </head>
 
@@ -106,12 +135,15 @@
 
 	<input type="button" value="Show More" id="show-more" />
 
+
 	<!-- Scripts -->
-	<script
-	  src="https://code.jquery.com/jquery-3.3.1.min.js"
-	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	  crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 
 	<script>
 	function goBack() {
@@ -120,16 +152,110 @@
 	</script>
 
 	<script id="child-template" type="text/x-handlebars-template">
-		<div class="child">
-			<img src="{{WebPageUrl}}" class="child-image" />
+		<div class="child" data-child-id="{{id}}">
+			<img src="{{imageUrl}}" class="child-image" />
 
 			<div class="child-body">
-                <h2 style="font-family: 'Roboto Condensed', sans-serif;">{{Title}}</h2>
+                <h2 style="font-family: 'Roboto Condensed', sans-serif;">{{fullName}}</h2>
                 
-				<p>I am <b> {{Age}} </b> years old <span style="float:right;"><a href="http://www.BlessingTheChildren.com"><button class="moreinfobutton">Child Info...</button></a></span></p>
-				<p>I am a <b> {{GenderString}} </b> </p>
-				<p>I've been waiting <b> {{WaitingString}}</b>
+				<p>I am <b> {{age}} </b> years old <span style="float:right;">
+				<button class="moreinfobutton">Child Info...</button>
+				<p>I am a <b> {{genderString}} </b> </p>
+				<p>I've been waiting <b> {{waitingString}}</b>
 				<span style="display:none">'</span>
+			</div>
+		</div>
+	</script>
+
+	<!-- Modal -->
+	<script id="child-modal-template" type="text/x-handlebars-template">
+		<div class="modal fade in" id="child-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-xl" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+
+						    <div style="">
+						    	<h3>{{fullName}}</h3>
+						    </div>
+						</div>
+
+
+						<!--<div style="width: 1100px">
+							<div style="width: auto; overflow: hidden; margin-right: 50px">
+								
+							</div>
+
+							
+							<!--
+						</div>-->
+
+						<div style="overflow: auto;">
+							<div class="child-modal-image" style="background-image: url('{{imageUrl}}')"></div>
+
+							<div class="child-modal-info">
+								<div class="container-fluid">
+									<div class="row">
+										<div class="col-md-6">
+											<span>Age: {{age}}</span>
+											<span>Birthday: {{birthdayString}}</span>
+											<span>Gender: {{gender}}</span>
+											<span>Language: {{language}}</span>
+											<span>Ethnic Background: {{ethnicBackgroundString}}</span>
+										</div>
+
+										<div class="col-md-6">
+											<span>Location: Ethiopia, Africa</span>
+											<span>School: {{school}}</span>
+											<span>Grade: {{gradeString}}</span>
+											<span>Sisters: {{numSisters}}</span>
+											<span>Brothers: {{numBrothers}}</span>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-12">
+											<div style="margin-top: 20px">
+												{{story}}
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-6">
+											
+										</div>
+
+										<div class="col-md-6">
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="container-fluid" style="padding: 0">
+							<div class="row">
+								<div class="col-md-6">
+									<span>{{nicknameString}} still needs ${{sponsorshipNeeded}} to be fully sponsored.</span>
+								</div>
+
+								<div class="col-md-6">
+									<span>Waiting {{waitingString}} for sponsorship</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Sponsor Me</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</script>
@@ -148,19 +274,32 @@
 		function receiveChildrenData(children) {
 			var childTemplateSource = document.getElementById("child-template").innerHTML;
 			var template = Handlebars.compile(childTemplateSource);
-			var ageLimit = new Date();
-			ageLimit.setFullYear( ageLimit.getFullYear() - 13 );
+			var minimumAge = new Date();
+			minimumAge.setFullYear( minimumAge.getFullYear() - 13 );
 
-			children = children.filter(function(c) { return c.ActiveForSponsorship && c.SponsorshipNeeded > 0 && new Date(c.Birthday) > ageLimit; })
-				.sort(firstBy("Priority", -1).thenBy("SponsorshipNeeded", -1));
+			children = children.filter(function(c) { return c.activeForSponsorship && c.sponsorshipNeeded > 0 && new Date(c.birthday) > minimumAge; })
+				.sort(firstBy("priority", -1).thenBy("sponsorshipNeeded", -1));
 			console.log(children);
 			window.nextIndex = 0;
+
+			var modalTemplateSource = document.getElementById("child-modal-template").innerHTML;
+			var modalTemplate = Handlebars.compile(modalTemplateSource);
             
 			appendNewRow(children, template);
 			$('#show-more').show();
 
 			$('#show-more').click(function() {
 				appendNewRow(children, template);
+			});
+
+			$(document).on('click', '.moreinfobutton', function(e) {
+				var childElement = e.target.closest('.child');
+				var childId = $(childElement).data('child-id');
+				var child = children.filter(function(c) { return c.id == childId; })[0];
+
+				showModal(modalTemplate, child);
+
+				//console.log(child);
 			});
 		}
 
@@ -181,17 +320,20 @@
 		}
 
 		function calcData(child) {
-			child.Age = calculateAge(child.Birthday);
-			child.GenderString = child.Gender == 'Female' ? 'girl' : 'boy';
-			child.WaitingString = calculateWaiting(child.StartDate);
+			child.age = calculateAge(child.birthday);
+			child.genderString = child.gender == 'Female' ? 'girl' : 'boy';
+			child.waitingString = calculateWaiting(child.startDate);
+			child.ethnicBackgroundString = child.ethnicBackground && child.ethnicBackground.length > 0 
+				? child.ethnicBackground.join(', ')
+				: 'Unknown';
+			child.birthdayString = moment(new Date(child.birthday)).format('MMMM Do YYYY');
+			child.gradeString = calculateGrade(child.yearStartedKG);
+			child.nicknameString = child.nickname || child.fullName;
 			return child;
 		}
 
 		function calculateAge(birthday) {
-			var birthDate = new Date(birthday);
-		    var ageDifMs = Date.now() - birthDate.getTime();
-		    var ageDate = new Date(ageDifMs); // miliseconds from epoch
-		    return Math.abs(ageDate.getUTCFullYear() - 1970);
+			return moment().diff(birthday, 'years');
 		}
 
 		function calculateWaiting(sinceDate) {
@@ -203,6 +345,27 @@
 			if (days >= 365)
 				return 'more than a year';
 			return days + ' days';
+		}
+
+		function calculateGrade(yearStartedKG) {
+			var gradeInt = moment().diff(yearStartedKG, 'years');
+			return gradeInt == 0 ? 'KG' :
+				gradeInt == 1 ? '1st grade' :
+				gradeInt == 2 ? '2nd grade' :
+				gradeInt == 3 ? '3rd grade' :
+				gradeInt + 'th grade';
+		}
+
+		function showModal(modalTemplate, child) {
+			var modal = modalTemplate(child);
+			var newDiv = document.createElement("div");
+			newDiv.id = 'modal-container';
+			newDiv.innerHTML = modal;
+			document.body.appendChild(newDiv);
+			$('#child-modal').modal('show');
+			$('#child-modal').on('hidden.bs.modal', function (e) {
+				$('#modal-container').remove();
+			});
 		}
 
 
