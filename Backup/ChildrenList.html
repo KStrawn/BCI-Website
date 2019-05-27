@@ -1,0 +1,377 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>Waiting Children</title>
+	<meta name="description" content="BCI Children Demo">
+	<meta name="author" content="BCI">
+	<link href="https://fonts.googleapis.com/css?family=Reem+Kufi|Roboto|Roboto+Condensed" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+	<style>
+		body {
+			padding: 1px;
+			padding-top: 1px
+			background-color: #FFFFFF;
+			font-family: 'Roboto', sans-serif;
+			font-size: 14pt;
+		}
+
+		.child-row {
+			margin-bottom: 15px;
+			height: 410px;
+		}
+
+		.child {
+			width: 340px;
+			height: 410px;
+			background-color: white;
+			float: left;
+			margin-right: 15px;
+		}
+
+		.child-image {
+			width: 340px;
+			height: 296px;
+		}
+
+		.child-body {
+			padding: 2px;
+			font-family: 'Roboto', sans-serif;
+            margin-left: 10px;
+            line-height: 3pt;
+			font-size: 18px;
+		}
+
+		.moreinfobutton {
+			width: 110px;
+			height: 30px;
+			background-color: #4CAF50;
+			border: none;
+			color: white;
+			padding: 2px 2px;
+			text-align: center;
+			font-size: 16px;
+            font-weight: bold;
+			cursor: pointer;
+			border:        1px solid #35600b;
+			border-radius: 4px;
+			box-shadow:    1px 1px #444444;
+		}
+
+		.moreinfobutton:hover {
+			background-color: #316100;
+		}
+
+		#show-more {
+			width: 200px;
+			height: 56px;
+			background-color: #0A0C21;
+			margin-top: 10px;
+			display: none;
+			font-size: 20pt;
+            font-weight: bold;
+            color: white;
+			border-radius: 7px;
+			box-shadow:    1px 1px #444444;
+		}
+
+		#show-more:hover {
+			background-color: rgb(66, 68, 90);
+		}
+
+		#child-modal {
+		}
+
+		@media (min-width: 1300px) {
+			.modal-xl {
+				/*width: 90%;*/
+				max-width:1200px;
+			}
+		}
+
+		.child-modal-image {
+			height: 300px;
+			width: 200px;
+			float: left;
+			/*background-size: cover;*/
+		    background-repeat: no-repeat;
+		    background-position: center;
+		}
+
+		.child-modal-info {
+			margin-left: 200px;
+		}
+
+		.child-modal-info span {
+			display: block;
+		}
+
+	</style>
+</head>
+
+<body>
+	<!--Start of Header-->
+	<section style="font-family: Arial; color: #f06000; background-color: #0A0C21; height: 48pt; padding: 5pt;">
+		<a href="http://www.blessingthechildren.com"><img src="http://blessingthechildren.com/assets/images/new-logo-all-white-110x53.png" alt="logo" width="120" height="58" /></a>
+	<span style="float:right;"><button onclick="goBack()">Back</button></span>
+	</section>	
+	<!--End of Header-->
+
+	<!--Start of body-->
+	<!--<h1><span style="color: #F06000; font-family: 'Reem Kufi', sans-serif;font-size: 26pt;">Blessing the Children International</span></h1>-->
+	<div style="color: #F06000; ">
+		<p style="font-family: 'Reem Kufi', sans-serif;font-size: 4rem;margin-left: 20px;margin-top: 26px;margin-bottom: 20px"> Waiting for Sponsorship</p>
+		</div> 
+	<div id="child-list" style="font-family: 'Roboto', sans-serif;font-size: 16pt;margin-left: 20px">
+		<p> Please join us in caring for the children who have no one. <br />
+			All it takes is $1 a day to make a real difference. <br />
+			We invite you to read their stories and learn more about these precious children. </p>
+		</div>
+	<!--End of body-->
+
+	<input type="button" value="Show More" id="show-more" />
+
+
+	<!-- Scripts -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	  crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+	<script>
+	function goBack() {
+	window.history.back();
+	}
+	</script>
+
+	<script id="child-template" type="text/x-handlebars-template">
+		<div class="child" data-child-id="{{id}}">
+			<img src="{{imageUrl}}" class="child-image" />
+
+			<div class="child-body">
+                <h2 style="font-family: 'Roboto Condensed', sans-serif;">{{fullName}}</h2>
+                
+				<p>I am <b> {{age}} </b> years old <span style="float:right;">
+				<button class="moreinfobutton">Child Info...</button>
+				<p>I am a <b> {{genderString}} </b> </p>
+				<p>I've been waiting <b> {{waitingString}}</b>
+				<span style="display:none">'</span>
+			</div>
+		</div>
+	</script>
+
+	<!-- Modal -->
+	<script id="child-modal-template" type="text/x-handlebars-template">
+		<div class="modal fade in" id="child-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-xl" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+
+						    <div style="">
+						    	<h3>{{fullName}}</h3>
+						    </div>
+						</div>
+
+
+						<!--<div style="width: 1100px">
+							<div style="width: auto; overflow: hidden; margin-right: 50px">
+								
+							</div>
+
+							
+							<!--
+						</div>-->
+
+						<div style="overflow: auto;">
+							<div class="child-modal-image" style="background-image: url('{{imageUrl}}')"></div>
+
+							<div class="child-modal-info">
+								<div class="container-fluid">
+									<div class="row">
+										<div class="col-md-6">
+											<span>Age: {{age}}</span>
+											<span>Birthday: {{birthdayString}}</span>
+											<span>Gender: {{gender}}</span>
+											<span>Language: {{language}}</span>
+											<span>Ethnic Background: {{ethnicBackgroundString}}</span>
+										</div>
+
+										<div class="col-md-6">
+											<span>Location: Ethiopia, Africa</span>
+											<span>School: {{school}}</span>
+											<span>Grade: {{gradeString}}</span>
+											<span>Sisters: {{numSisters}}</span>
+											<span>Brothers: {{numBrothers}}</span>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-12">
+											<div style="margin-top: 20px">
+												{{story}}
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-6">
+											
+										</div>
+
+										<div class="col-md-6">
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="container-fluid" style="padding: 0">
+							<div class="row">
+								<div class="col-md-6">
+									<span>{{nicknameString}} still needs ${{sponsorshipNeeded}} to be fully sponsored.</span>
+								</div>
+
+								<div class="col-md-6">
+									<span>Waiting {{waitingString}} for sponsorship</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Sponsor Me</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/javascript">
+
+		$(function() {
+			$.ajax({
+				type: 'GET',
+				url: 'https://bci-sharepointcall.azurewebsites.net/api/children',
+				dataType: 'jsonp',
+				jsonpCallback: 'receiveChildrenData'
+			});
+		});
+
+		function receiveChildrenData(children) {
+			var childTemplateSource = document.getElementById("child-template").innerHTML;
+			var template = Handlebars.compile(childTemplateSource);
+			var minimumAge = new Date();
+			minimumAge.setFullYear( minimumAge.getFullYear() - 13 );
+
+			children = children.filter(function(c) { return c.activeForSponsorship && c.sponsorshipNeeded > 0 && new Date(c.birthday) > minimumAge; })
+				.sort(firstBy("priority", -1).thenBy("sponsorshipNeeded", -1));
+			console.log(children);
+			window.nextIndex = 0;
+
+			var modalTemplateSource = document.getElementById("child-modal-template").innerHTML;
+			var modalTemplate = Handlebars.compile(modalTemplateSource);
+            
+			appendNewRow(children, template);
+			$('#show-more').show();
+
+			$('#show-more').click(function() {
+				appendNewRow(children, template);
+			});
+
+			$(document).on('click', '.moreinfobutton', function(e) {
+				var childElement = e.target.closest('.child');
+				var childId = $(childElement).data('child-id');
+				var child = children.filter(function(c) { return c.id == childId; })[0];
+
+				showModal(modalTemplate, child);
+
+				//console.log(child);
+			});
+		}
+
+		function appendNewRow(children, template) {
+			var htmlArray = [];
+
+			for (var i = 0; i < 3; i++) {
+				var child = calcData(children[nextIndex]);
+				htmlArray.push(template(child));
+				nextIndex++;
+			}
+
+			var newDiv = document.createElement("div");
+			newDiv.className = 'child-row';
+			newDiv.innerHTML = htmlArray.join('');
+
+			document.getElementById('child-list').appendChild(newDiv);
+		}
+
+		function calcData(child) {
+			child.age = calculateAge(child.birthday);
+			child.genderString = child.gender == 'Female' ? 'girl' : 'boy';
+			child.waitingString = calculateWaiting(child.startDate);
+			child.ethnicBackgroundString = child.ethnicBackground && child.ethnicBackground.length > 0 
+				? child.ethnicBackground.join(', ')
+				: 'Unknown';
+			child.birthdayString = moment(new Date(child.birthday)).format('MMMM Do YYYY');
+			child.gradeString = calculateGrade(child.yearStartedKG);
+			child.nicknameString = child.nickname || child.fullName;
+			return child;
+		}
+
+		function calculateAge(birthday) {
+			return moment().diff(birthday, 'years');
+		}
+
+		function calculateWaiting(sinceDate) {
+			var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+			var firstDate = new Date(sinceDate);
+			var secondDate = Date.now();
+
+			var days = Math.round(Math.abs((firstDate.getTime() - secondDate)/(oneDay)));
+			if (days >= 365)
+				return 'more than a year';
+			return days + ' days';
+		}
+
+		function calculateGrade(yearStartedKG) {
+			var gradeInt = moment().diff(yearStartedKG, 'years');
+			return gradeInt == 0 ? 'KG' :
+				gradeInt == 1 ? '1st grade' :
+				gradeInt == 2 ? '2nd grade' :
+				gradeInt == 3 ? '3rd grade' :
+				gradeInt + 'th grade';
+		}
+
+		function showModal(modalTemplate, child) {
+			var modal = modalTemplate(child);
+			var newDiv = document.createElement("div");
+			newDiv.id = 'modal-container';
+			newDiv.innerHTML = modal;
+			document.body.appendChild(newDiv);
+			$('#child-modal').modal('show');
+			$('#child-modal').on('hidden.bs.modal', function (e) {
+				$('#modal-container').remove();
+			});
+		}
+
+
+		// thenBy.js
+		/*** Copyright 2013 Teun Duynstee Licensed under the Apache License, Version 2.0 ***/
+		!function(n,t){"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?module.exports=t():n.firstBy=t()}(this,function(){var n=function(){function n(n){return n}function t(n){return"string"==typeof n?n.toLowerCase():n}function r(r,e){if(e="number"==typeof e?{direction:e}:e||{},"function"!=typeof r){var i=r;r=function(n){return n[i]?n[i]:""}}if(1===r.length){var o=r,f=e.ignoreCase?t:n,u=e.cmp||function(n,t){return n<t?-1:n>t?1:0};r=function(n,t){return u(f(o(n)),f(o(t)))}}return e.direction===-1?function(n,t){return-r(n,t)}:r}function e(n,t){var i="function"==typeof this&&!this.firstBy&&this,o=r(n,t),f=i?function(n,t){return i(n,t)||o(n,t)}:o;return f.thenBy=e,f}return e.firstBy=e,e}();return n});
+	</script>
+</body>
+</html>
