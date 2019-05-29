@@ -241,7 +241,7 @@
 						<div class="container-fluid" style="padding: 0">
 							<div class="row">
 								<div class="col-md-6">
-									<span>{{nicknameString}} still needs ${{sponsorshipNeeded}} to be fully sponsored.</span>
+									<span>{{nicknameString}} still needs ${{sponsorshipNeeded}}/month to be fully sponsored.</span>
 								</div>
 
 								<div class="col-md-6">
@@ -354,7 +354,7 @@
 		function calculateGrade(yearStartedKG) {
 			var year = new Date(yearStartedKG).getFullYear();
 			if (year < 1900) return 'N/A';
-			
+
 			var gradeInt = moment().diff(yearStartedKG, 'years');
 			return gradeInt == 0 ? 'KG' :
 				gradeInt == 1 ? '1st grade' :
