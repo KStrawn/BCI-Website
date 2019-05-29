@@ -290,6 +290,8 @@
 
 			$('#show-more').click(function() {
 				appendNewRow(children, template);
+				if (nextIndex == children.length)
+					$('#show-more').attr("disabled", true);
 			});
 
 			$(document).on('click', '.moreinfobutton', function(e) {
@@ -306,11 +308,13 @@
 		function appendNewRow(children, template) {
 			var htmlArray = [];
 
-			for (var i = 0; i < 3; i++) {
+			for (var i = 0; i < 3 && nextIndex < children.length; i++) {
 				var child = calcData(children[nextIndex]);
 				htmlArray.push(template(child));
 				nextIndex++;
 			}
+
+			if (htmlArray.length == 0) return;
 
 			var newDiv = document.createElement("div");
 			newDiv.className = 'child-row';
@@ -348,11 +352,15 @@
 		}
 
 		function calculateGrade(yearStartedKG) {
+			var year = new Date(yearStartedKG).getFullYear();
+			if (year < 1900) return 'N/A';
+			
 			var gradeInt = moment().diff(yearStartedKG, 'years');
 			return gradeInt == 0 ? 'KG' :
 				gradeInt == 1 ? '1st grade' :
 				gradeInt == 2 ? '2nd grade' :
 				gradeInt == 3 ? '3rd grade' :
+				gradeInt > 12 ? 'Graduated' :
 				gradeInt + 'th grade';
 		}
 
