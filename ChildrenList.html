@@ -14,7 +14,7 @@
 	<style>
 		body {
 			padding: 1px;
-			padding-top: 1px
+			padding-top: 1px;
 			background-color: #FFFFFF;
 			font-family: 'Roboto', sans-serif;
 			font-size: 14pt;
@@ -253,7 +253,32 @@
 
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Sponsor Me</button>
+<!-- Sponsor Now Form Submit-->
+						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="RT9NEETZCAQEU">
+							<table>
+							<tr><td><input type="hidden" name="on0" value="Sponsorship Level">Sponsorship Level</td></tr><tr><td><select name="os0">
+								<option value="$15 per month">$15 per month : $15.00 USD - monthly</option>
+								<option value="$22.50 per month">$22.50 per month : $22.50 USD - monthly</option>
+								<option value="$30 per month">$30 per month : $30.00 USD - monthly</option>
+								<option value="$45 per month">$45 per month : $45.00 USD - monthly</option>
+								<option value="$60 per month">$60 per month : $60.00 USD - monthly</option>
+								<option value="$90 per month">$90 per month : $90.00 USD - monthly</option>
+								<option value="$300 per month">$300 per month : $300.00 USD - monthly</option>
+								<option value="$500 per month">$500 per month : $500.00 USD - monthly</option>
+								<option value="$750 per month">$750 per month : $750.00 USD - monthly</option>
+								<option value="$1,000 per month">$1,000 per month : $1,000.00 USD - monthly</option>
+							</select> </td></tr>
+							<tr><td><input type="hidden" name="on1" value="Comment or Child's Name"></td></tr>
+							<tr><td><input type="hidden" id="paypal-child-name" name="os1" maxlength="200"></td></tr>
+							</table>
+							<input type="hidden" name="currency_code" value="USD">
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+							</form>
+							
+
 					</div>
 				</div>
 			</div>
@@ -365,11 +390,16 @@
 		}
 
 		function showModal(modalTemplate, child) {
+			$('#modal-container').remove();
+
 			var modal = modalTemplate(child);
 			var newDiv = document.createElement("div");
 			newDiv.id = 'modal-container';
 			newDiv.innerHTML = modal;
 			document.body.appendChild(newDiv);
+
+			$('#paypal-child-name').val(child.fullName);
+
 			$('#child-modal').modal('show');
 			$('#child-modal').on('hidden.bs.modal', function (e) {
 				$('#modal-container').remove();
