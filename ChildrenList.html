@@ -123,17 +123,30 @@
 
 	<!--Start of body-->
 	<!--<h1><span style="color: #F06000; font-family: 'Reem Kufi', sans-serif;font-size: 26pt;">Blessing the Children International</span></h1>-->
-	<div style="color: #F06000; ">
-		<p style="font-family: 'Reem Kufi', sans-serif;font-size: 4rem;margin-left: 20px;margin-top: 26px;margin-bottom: 20px"> Waiting for Sponsorship</p>
-		</div> 
-	<div id="child-list" style="font-family: 'Roboto', sans-serif;font-size: 16pt;margin-left: 20px">
+	<div>
+		<p style="font-family: 'Reem Kufi', sans-serif;font-size: 4rem;margin-left: 20px;margin-top: 26px;margin-bottom: 20px; color: #F06000;"> Waiting for Sponsorship</p>
+
+		<div style="float: right; margin-right: 20px">
+			<label for="child-filter">Filter</label>
+			<select id="child-filter">
+				<option value="sponsorship-needed" selected="selected">Sponsorship Needed</option>
+				<option value="all">All Children</option>
+				<option value="girls">Girls</option>
+				<option value="boys">Boys</option>
+			</select>
+		</div>
+	</div>
+
+	<div style="margin-left: 20px">
 		<p> Please join us in caring for the children who have no one. <br />
 			All it takes is $1 a day to make a real difference. <br />
 			We invite you to read their stories and learn more about these precious children. </p>
-		</div>
-	<!--End of body-->
 
-	<input type="button" value="Show More" id="show-more" />
+		<div id="child-list" style="font-family: 'Roboto', sans-serif;font-size: 16pt"></div>
+		<!--End of body-->
+
+		<input type="button" value="Show More" id="show-more" />
+	</div>
 
 
 	<!-- Scripts -->
@@ -190,7 +203,6 @@
 							</div>
 
 							
-							<!--
 						</div>-->
 
 						<div style="overflow: auto;">
@@ -296,19 +308,54 @@
 			});
 		});
 
-		function receiveChildrenData(children) {
+		function receiveChildrenData(allChildren) {
 			var childTemplateSource = document.getElementById("child-template").innerHTML;
 			var template = Handlebars.compile(childTemplateSource);
-			var minimumAge = new Date();
-			minimumAge.setFullYear( minimumAge.getFullYear() - 13 );
-
-			children = children.filter(function(c) { return c.activeForSponsorship && c.sponsorshipNeeded > 0 && new Date(c.birthday) > minimumAge; })
-				.sort(firstBy("priority", -1).thenBy("sponsorshipNeeded", -1));
-			console.log(children);
-			window.nextIndex = 0;
 
 			var modalTemplateSource = document.getElementById("child-modal-template").innerHTML;
 			var modalTemplate = Handlebars.compile(modalTemplateSource);
+			
+			var minimumAge = new Date();
+			minimumAge.setFullYear( minimumAge.getFullYear() - 13 );
+
+			var children = filterSponsorshipNeeded(allChildren, minimumAge);
+			console.log(children);
+			
+			setChildrenData(children, template);
+
+			$(document).on('click', '.moreinfobutton', function(e) {
+				var childElement = e.target.closest('.child');
+				var childId = $(childElement).data('child-id');
+				var child = allChildren.filter(function(c) { return c.id == childId; })[0];
+
+				showModal(modalTemplate, child);
+
+				//console.log(child);
+			});
+
+			$('#child-filter').change(function() {
+				$('#child-list').empty();
+
+				var selectedFilter = $(this).val();
+				if (selectedFilter == 'sponsorship-needed') {
+					children = filterSponsorshipNeeded(allChildren, minimumAge);
+					setChildrenData(children, template);
+				} else if (selectedFilter == 'all') {
+					children = filterActiveForSponsorship(allChildren);
+					setChildrenData(children, template);
+				} else if (selectedFilter == 'girls') {
+					children = filterGirls(allChildren);
+					setChildrenData(children, template);
+				} else if (selectedFilter == 'boys') {
+					children = filterBoys(allChildren);
+					setChildrenData(children, template);
+				}
+			});
+		}
+
+		function setChildrenData(children, template) {
+			window.nextIndex = 0;
+			$('#show-more').off();
             
 			appendNewRow(children, template);
 			$('#show-more').show();
@@ -318,16 +365,26 @@
 				if (nextIndex == children.length)
 					$('#show-more').attr("disabled", true);
 			});
+		}
 
-			$(document).on('click', '.moreinfobutton', function(e) {
-				var childElement = e.target.closest('.child');
-				var childId = $(childElement).data('child-id');
-				var child = children.filter(function(c) { return c.id == childId; })[0];
+		function filterSponsorshipNeeded(allChildren, minimumAge) {
+			return allChildren.filter(function(c) { return c.activeForSponsorship && c.sponsorshipNeeded > 0 && new Date(c.birthday) > minimumAge; })
+				.sort(firstBy("priority", -1).thenBy("sponsorshipNeeded", -1));
+		}
 
-				showModal(modalTemplate, child);
+		function filterActiveForSponsorship(allChildren) {
+			return allChildren.filter(function(c) { return c.activeForSponsorship; })
+				.sort(firstBy("fullName"));
+		}
 
-				//console.log(child);
-			});
+		function filterGirls(allChildren) {
+			return allChildren.filter(function(c) { return c.activeForSponsorship && c.gender.toUpperCase() === 'FEMALE'; })
+				.sort(firstBy("fullName"));
+		}
+
+		function filterBoys(allChildren) {
+			return allChildren.filter(function(c) { return c.activeForSponsorship && c.gender.toUpperCase() === 'MALE'; })
+				.sort(firstBy("fullName"));
 		}
 
 		function appendNewRow(children, template) {
@@ -355,7 +412,9 @@
 			child.ethnicBackgroundString = child.ethnicBackground && child.ethnicBackground.length > 0 
 				? child.ethnicBackground.join(', ')
 				: 'Unknown';
-			child.birthdayString = moment(new Date(child.birthday)).format('MMMM Do YYYY');
+			var birthDate = new Date(child.birthday);
+			birthDate.setDate(birthDate.getDate() + 1);
+			child.birthdayString = moment(birthDate).format('MMMM Do YYYY');
 			child.gradeString = calculateGrade(child.yearStartedKG);
 			child.nicknameString = child.nickname || child.fullName;
 			return child;
