@@ -41,7 +41,7 @@
     "versionFirst": "4.8.4",
     "siteFonts": [],
     "uniqCompNum": 142,
-    "versionPublish": "4.9.6",
+    "versionPublish": "4.10.6",
     "screenshot": "screenshot.png",
     "favicon": "",
     "noImageResize": "",
@@ -62,7 +62,7 @@
     "siteUrl": "http://www.blessingthechildren.org/",
     "sitemapSwitcherAuto": "",
     "robotsText": "User-agent: *\r\nDisallow: /cgi-bin\r\n",
-    "robotsSwitcher": "on",
+    "robotsSwitcher": "",
     "sitemapSwitcher": "on"
   },
   "pages": {
@@ -871,7 +871,7 @@
             }
           },
           "_name": "features10",
-          "_customHTML": "<section class=\"features10 mbr-section\" group=\"Features\" plugins=\"amp-main\">\n\n    <mbr-parameters>\n    <!-- Block parameters controls (Blue \"Gear\" panel) -->\n        <input type=\"range\" inline=\"\" title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"9\" step=\"1\" value=\"4\">\n        <input type=\"range\" inline=\"\" title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"9\" step=\"1\" value=\"4\">\n\n        <input type=\"checkbox\" title=\"Show Title\" name=\"showTitle\" checked=\"\">\n        <input type=\"checkbox\" title=\"Show Text\" name=\"showText\" checked=\"\">\n        <input type=\"checkbox\" title=\"Show Buttons\" name=\"showButtons\" checked=\"\">\n        <input type=\"color\" title=\"Cards Bg\" name=\"cardBg\" value=\"#0a0c21\">\n        <select title=\"Cards\" name=\"cardsAmount\">\n            <option value=\"1\">1</option>\n            <option value=\"2\">2</option>\n            <option value=\"3\" selected=\"\">3</option>\n        </select>\n\n        <fieldset type=\"background\" name=\"bg\">\n            <input type=\"image\" title=\"Background Image\" value=\"../_images/background1.jpg\">\n            <input type=\"color\" title=\"Background Color\" value=\"#ececec\" selected=\"\">\n        </fieldset>\n\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" checked=\"\" condition=\"bg.type!='color'\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#ececec\" condition=\"bg.type!='color' &amp;&amp; overlay\">\n        <input type=\"range\" inline=\"\" title=\"Overlay Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.5\" condition=\"bg.type!='color' &amp;&amp; overlay\">\n    <!-- End block parameters -->\n    </mbr-parameters>\n\n    <div class=\"mbr-overlay\" mbr-if=\"overlay &amp;&amp; bg.type !== 'color'\"></div>\n    <div class=\"container\">\n        <div class=\"mbr-row mbr-justify-content-center\">\n            <div class=\"card mbr-col-sm-12 mbr-col-md-6\" mbr-class=\"{'mbr-col-lg-4': cardsAmount == 3,\n                             'mbr-col-lg-3': cardsAmount == 4,\n                             'first-row-card': cardsAmount > 2,\n                             'last-child': cardsAmount == 1}\">\n                <div class=\"card-wrapper\">\n                    <div class=\"card-img\">\n                        <amp-img src=\"@PROJECT_PATH@/assets/images/feeding1-700x526.jpg\" layout=\"responsive\" width=\"483.07984790874525\" class=\"mobirise-loader\" height=\"363\" alt=\"Young Ethiopian Boy Eats Breakfast\">\n                            <div placeholder=\"\" class=\"placeholder\"></div>\n                            <img class=\"mbr-temp\" src=\"@PROJECT_PATH@/assets/images/feeding1-700x526.jpg\" alt=\"Young Ethiopian Boy Eats Breakfast\" title=\"Feeding Program\">\n                        </amp-img>\n                    </div>\n                    <div class=\"card-box\">\n                        <h4 class=\"card-title mbr-fonts-style align-left mbr-light\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".card-title\">\n                            Feeding Program</h4>\n                        <p class=\"mbr-text mbr-fonts-style align-left\" mbr-theme-style=\"display-7\" mbr-if=\"showText\" data-app-selector=\".mbr-text, .mbr-section-btn\">\n                            We feed hundreds of meals to hungry and impoverished children each week through our breakfast and lunch feeding programs. We also provide grain support to keep their bellies full at home.\n                        </p>\n                        <div class=\"mbr-section-btn align-left\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove\" mbr-buttons=\"\" mbr-theme-style=\"display-7\"><a class=\"btn-underline text-danger\" href=\"feeding.html\" data-app-placeholder=\"Type Text\">\n                                LEARN MORE\n                            </a></div>\n                    </div>\n                </div>\n            </div>\n            \n            <div class=\"card mbr-col-sm-12 mbr-col-md-6\" mbr-class=\"{'mbr-col-lg-4': cardsAmount == 3,\n                             'mbr-col-lg-3': cardsAmount == 4,\n                             'first-row-card': cardsAmount > 2,\n                             'last-child': cardsAmount == 2}\" mbr-if=\"cardsAmount > 1\">\n                <div class=\"card-wrapper\">\n                    <div class=\"card-img\">\n                        <amp-img src=\"@PROJECT_PATH@/assets/images/dscf4940-700x525.jpg\" layout=\"responsive\" height=\"362\" class=\"mobirise-loader\" width=\"482.66666666666663\" alt=\"Missionary Inspects the Health of a Young Ethiopian Boy\">\n                            <div placeholder=\"\" class=\"placeholder\"></div>\n                            <img class=\"mbr-temp\" src=\"@PROJECT_PATH@/assets/images/dscf4940-700x525.jpg\" alt=\"Missionary Inspects the Health of a Young Ethiopian Boy\" title=\"Medical Care\">\n                        </amp-img>\n                    </div>\n                    <div class=\"card-box\">\n                        <h4 class=\"card-title mbr-fonts-style align-left mbr-light\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".card-title\">\n                            Medical Care</h4>\n                        <p class=\"mbr-text mbr-fonts-style align-left\" mbr-theme-style=\"display-7\" mbr-if=\"showText\" data-app-selector=\".mbr-text, .mbr-section-btn\">\n                            We provide routine medical checkups, vitamins, vaccinations, and access to advanced medical care to ensure the health and wellbeing of the children in our care.\n                        </p>\n                        <div class=\"mbr-section-btn align-left\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove\" mbr-buttons=\"\" mbr-theme-style=\"display-7\"><a class=\"btn-underline text-danger\" href=\"medical.html\" data-app-placeholder=\"Type Text\">\n                                LEARN MORE\n                            </a></div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"card mbr-col-sm-12 mbr-col-md-6\" mbr-class=\"{'mbr-col-lg-4': cardsAmount == 3,\n                             'mbr-col-lg-3': cardsAmount == 4,\n                             'last-child': cardsAmount == 3}\" mbr-if=\"cardsAmount > 2\">\n                <div class=\"card-wrapper\">\n                    <div class=\"card-img\">\n                        <amp-img src=\"@PROJECT_PATH@/assets/images/education-700x527.jpg\" layout=\"responsive\" class=\"mobirise-loader\" height=\"364\" width=\"483.49146110056927\" alt=\"BCI Academy Kindergarten Graduate\">\n                            <div placeholder=\"\" class=\"placeholder\"></div>\n                            <img class=\"mbr-temp\" src=\"@PROJECT_PATH@/assets/images/education-700x527.jpg\" alt=\"BCI Academy Kindergarten Graduate\" title=\"Education\">\n                        </amp-img>\n                    </div>\n                    <div class=\"card-box\">\n                        <h4 class=\"card-title mbr-fonts-style align-left mbr-light\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".card-title\">\n                            Education</h4>\n                        <p class=\"mbr-text mbr-fonts-style align-left\" mbr-theme-style=\"display-7\" mbr-if=\"showText\" data-app-selector=\".mbr-text, .mbr-section-btn\">\n                            We educate more than 2,000 students each year at our school, the BCI Academy. We opened our doors in 2009 and in 2018 sent our first University graduates into the workforce. \n                        </p>\n                        <div class=\"mbr-section-btn align-left\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove\" mbr-buttons=\"\" mbr-theme-style=\"display-7\"><a class=\"btn-underline text-danger\" href=\"bciacademy.html\" data-app-placeholder=\"Type Text\">\n                                LEARN MORE\n                            </a></div>\n                    </div>\n                </div>\n            </div>            \n        </div>\n    </div>\n</section>",
+          "_customHTML": "<section class=\"features10 mbr-section\" group=\"Features\" plugins=\"amp-main\">\n\n    <mbr-parameters>\n    <!-- Block parameters controls (Blue \"Gear\" panel) -->\n        <input type=\"range\" inline=\"\" title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"9\" step=\"1\" value=\"4\">\n        <input type=\"range\" inline=\"\" title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"9\" step=\"1\" value=\"4\">\n\n        <input type=\"checkbox\" title=\"Show Title\" name=\"showTitle\" checked=\"\">\n        <input type=\"checkbox\" title=\"Show Text\" name=\"showText\" checked=\"\">\n        <input type=\"checkbox\" title=\"Show Buttons\" name=\"showButtons\" checked=\"\">\n        <input type=\"color\" title=\"Cards Bg\" name=\"cardBg\" value=\"#0a0c21\">\n        <select title=\"Cards\" name=\"cardsAmount\">\n            <option value=\"1\">1</option>\n            <option value=\"2\">2</option>\n            <option value=\"3\" selected=\"\">3</option>\n        </select>\n\n        <fieldset type=\"background\" name=\"bg\">\n            <input type=\"image\" title=\"Background Image\" value=\"../_images/background1.jpg\">\n            <input type=\"color\" title=\"Background Color\" value=\"#ececec\" selected=\"\">\n        </fieldset>\n\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" checked=\"\" condition=\"bg.type!='color'\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#ececec\" condition=\"bg.type!='color' &amp;&amp; overlay\">\n        <input type=\"range\" inline=\"\" title=\"Overlay Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.5\" condition=\"bg.type!='color' &amp;&amp; overlay\">\n    <!-- End block parameters -->\n    </mbr-parameters>\n\n    <div class=\"mbr-overlay\" mbr-if=\"overlay &amp;&amp; bg.type !== 'color'\"></div>\n    <div class=\"container\">\n        <div class=\"mbr-row mbr-justify-content-center\">\n            <div class=\"card mbr-col-sm-12 mbr-col-md-6\" mbr-class=\"{'mbr-col-lg-4': cardsAmount == 3,\n                             'mbr-col-lg-3': cardsAmount == 4,\n                             'first-row-card': cardsAmount > 2,\n                             'last-child': cardsAmount == 1}\">\n                <div class=\"card-wrapper\">\n                    <div class=\"card-img\">\n                        <amp-img src=\"@PROJECT_PATH@/assets/images/feeding1-700x526.jpg\" layout=\"responsive\" width=\"484.41064638783274\" class=\"mobirise-loader\" height=\"364\" alt=\"Young Ethiopian Boy Eats Breakfast\">\n                            <div placeholder=\"\" class=\"placeholder\"></div>\n                            <img class=\"mbr-temp\" src=\"@PROJECT_PATH@/assets/images/feeding1-700x526.jpg\" alt=\"Young Ethiopian Boy Eats Breakfast\" title=\"Feeding Program\">\n                        </amp-img>\n                    </div>\n                    <div class=\"card-box\">\n                        <h4 class=\"card-title mbr-fonts-style align-left mbr-light\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".card-title\">\n                            Feeding Program</h4>\n                        <p class=\"mbr-text mbr-fonts-style align-left\" mbr-theme-style=\"display-7\" mbr-if=\"showText\" data-app-selector=\".mbr-text, .mbr-section-btn\">\n                            We feed hundreds of meals to hungry and impoverished children each week through our breakfast and lunch feeding programs. We also provide grain support to keep their bellies full at home.\n                        </p>\n                        <div class=\"mbr-section-btn align-left\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove\" mbr-buttons=\"\" mbr-theme-style=\"display-7\"><a class=\"btn-underline text-danger\" href=\"feeding.html\" data-app-placeholder=\"Type Text\">\n                                LEARN MORE\n                            </a></div>\n                    </div>\n                </div>\n            </div>\n            \n            <div class=\"card mbr-col-sm-12 mbr-col-md-6\" mbr-class=\"{'mbr-col-lg-4': cardsAmount == 3,\n                             'mbr-col-lg-3': cardsAmount == 4,\n                             'first-row-card': cardsAmount > 2,\n                             'last-child': cardsAmount == 2}\" mbr-if=\"cardsAmount > 1\">\n                <div class=\"card-wrapper\">\n                    <div class=\"card-img\">\n                        <amp-img src=\"@PROJECT_PATH@/assets/images/dscf4940-700x525.jpg\" layout=\"responsive\" height=\"363\" class=\"mobirise-loader\" width=\"484\" alt=\"Missionary Inspects the Health of a Young Ethiopian Boy\">\n                            <div placeholder=\"\" class=\"placeholder\"></div>\n                            <img class=\"mbr-temp\" src=\"@PROJECT_PATH@/assets/images/dscf4940-700x525.jpg\" alt=\"Missionary Inspects the Health of a Young Ethiopian Boy\" title=\"Medical Care\">\n                        </amp-img>\n                    </div>\n                    <div class=\"card-box\">\n                        <h4 class=\"card-title mbr-fonts-style align-left mbr-light\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".card-title\">\n                            Medical Care</h4>\n                        <p class=\"mbr-text mbr-fonts-style align-left\" mbr-theme-style=\"display-7\" mbr-if=\"showText\" data-app-selector=\".mbr-text, .mbr-section-btn\">\n                            We provide routine medical checkups, vitamins, vaccinations, and access to advanced medical care to ensure the health and wellbeing of the children in our care.\n                        </p>\n                        <div class=\"mbr-section-btn align-left\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove\" mbr-buttons=\"\" mbr-theme-style=\"display-7\"><a class=\"btn-underline text-danger\" href=\"medical.html\" data-app-placeholder=\"Type Text\">\n                                LEARN MORE\n                            </a></div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"card mbr-col-sm-12 mbr-col-md-6\" mbr-class=\"{'mbr-col-lg-4': cardsAmount == 3,\n                             'mbr-col-lg-3': cardsAmount == 4,\n                             'last-child': cardsAmount == 3}\" mbr-if=\"cardsAmount > 2\">\n                <div class=\"card-wrapper\">\n                    <div class=\"card-img\">\n                        <amp-img src=\"@PROJECT_PATH@/assets/images/education-700x527.jpg\" layout=\"responsive\" class=\"mobirise-loader\" height=\"364\" width=\"483.49146110056927\" alt=\"BCI Academy Kindergarten Graduate\">\n                            <div placeholder=\"\" class=\"placeholder\"></div>\n                            <img class=\"mbr-temp\" src=\"@PROJECT_PATH@/assets/images/education-700x527.jpg\" alt=\"BCI Academy Kindergarten Graduate\" title=\"Education\">\n                        </amp-img>\n                    </div>\n                    <div class=\"card-box\">\n                        <h4 class=\"card-title mbr-fonts-style align-left mbr-light\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".card-title\">\n                            Education</h4>\n                        <p class=\"mbr-text mbr-fonts-style align-left\" mbr-theme-style=\"display-7\" mbr-if=\"showText\" data-app-selector=\".mbr-text, .mbr-section-btn\">\n                            We educate more than 2,000 students each year at our school, the BCI Academy. We opened our doors in 2009 and in 2018 sent our first University graduates into the workforce. \n                        </p>\n                        <div class=\"mbr-section-btn align-left\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove\" mbr-buttons=\"\" mbr-theme-style=\"display-7\"><a class=\"btn-underline text-danger\" href=\"bciacademy.html\" data-app-placeholder=\"Type Text\">\n                                LEARN MORE\n                            </a></div>\n                    </div>\n                </div>\n            </div>            \n        </div>\n    </div>\n</section>",
           "_cid": "r66laRbodR",
           "_anchor": "features10-a",
           "_protectedParams": [],
@@ -3523,7 +3523,7 @@
     "sponsorship.html": {
       "settings": {
         "title": "Child Sponsorship",
-        "order": 3,
+        "order": 2,
         "meta_descr": "Make a difference in the life of a needy child in Ethiopia, Africa. Less than $1 a day educates, feeds and clothes an orphaned child. Change a life today!"
       },
       "components": [
@@ -5142,7 +5142,7 @@
     "plight.html": {
       "settings": {
         "title": "Plight of the Orphan",
-        "order": 5,
+        "order": 4,
         "meta_descr": "It's no life for a child. Hungry and desperate, the needy children are many. We’re making a difference one child at a time. Won’t you join us & sponsor a child?"
       },
       "components": [
@@ -6074,7 +6074,7 @@
     "medical.html": {
       "settings": {
         "title": "Medical Care",
-        "order": 8,
+        "order": 6,
         "meta_descr": "Help us save the lives of orphaned and abandoned children in Ethiopia, Africa. We need medical missionaries, interns, and donations of medical supplies. "
       },
       "components": [
@@ -7218,7 +7218,7 @@
     "goingtoethiopia.html": {
       "settings": {
         "title": "Going to Ethiopia",
-        "order": 9,
+        "order": 7,
         "header_custom": "",
         "meta_descr": "Complete your internship or travel on a mission trip to Ethiopia, Africa and give hope to hopeless orphans and widows. Teams and individuals welcome."
       },
@@ -8383,7 +8383,7 @@
     "missiontrips.html": {
       "settings": {
         "title": "Mission Trips",
-        "order": 10,
+        "order": 8,
         "meta_descr": "We’re changing the lives of orphaned & impoverished children. Won’t you join us? Bring a missions team or travel alone to our ministry site in Ethiopia, Africa."
       },
       "components": [
@@ -10098,7 +10098,7 @@
     "ministryopportunities.html": {
       "settings": {
         "title": "Ministry Opportunities",
-        "order": 11,
+        "order": 9,
         "meta_descr": "Join us for a mission trip to work with needy children in Ethiopia, Africa. Teach English at our school, feed hungry children, provide medical care, and more!",
         "header_custom": ""
       },
@@ -11653,7 +11653,7 @@
     "internships.html": {
       "settings": {
         "title": "Internships",
-        "order": 12,
+        "order": 10,
         "meta_descr": "We’re changing the lives of orphaned & impoverished children in Ethiopia, Africa. Won’t you join us? Medical, teaching, and ministry internships available.  ",
         "header_custom": ""
       },
@@ -13493,7 +13493,7 @@
     "internshiptypes.html": {
       "settings": {
         "title": "Internship Types",
-        "order": 13,
+        "order": 11,
         "meta_descr": "We’re changing the lives of orphaned & impoverished children in Ethiopia, Africa. Won’t you join us? Medical, teaching, and ministry internships available.  "
       },
       "components": [
@@ -14609,7 +14609,7 @@
     "projects.html": {
       "settings": {
         "title": "Projects",
-        "order": 15,
+        "order": 13,
         "meta_descr": "There is no shortage of need for orphaned children in Ethiopia, Africa. Feed, clothe or educate a child. It takes so little to do so much. Won’t you help?",
         "header_custom": ""
       },
@@ -15583,7 +15583,7 @@
     "bciacademy.html": {
       "settings": {
         "title": "BCI Academy",
-        "order": 14,
+        "order": 12,
         "meta_descr": "We’re educating orphaned children at the BCI Academy in Ethiopia, Africa. Educate a child for less than $1/day or join us for a teaching internship. "
       },
       "components": [
@@ -16812,7 +16812,7 @@
     "incomeforlife.html": {
       "settings": {
         "title": "Income for Life",
-        "order": 16,
+        "order": 14,
         "header_custom": "",
         "meta_descr": "We're giving widows in Ethiopia, Africa hope for the future through our Income for Life program. Join us on a mission trip or send support to change lives."
       },
@@ -17858,7 +17858,7 @@
     "birthdayblessings.html": {
       "settings": {
         "title": "Birthday Blessings",
-        "order": 17,
+        "order": 15,
         "meta_descr": "Send a birthday party to an orphan in Ethiopia. Just $35 USD provides a birthday party, complete with cake and balloons. "
       },
       "components": [
@@ -18796,7 +18796,7 @@
     "news.html": {
       "settings": {
         "title": "Current News",
-        "order": 19,
+        "order": 17,
         "meta_descr": "Stay up-to-date on the happenings of Blessing the Children International's ministry in Ethiopia, Africa. News, photos, videos and more!"
       },
       "components": [
@@ -19414,7 +19414,7 @@
             }
           },
           "_name": "header11",
-          "_customHTML": "<section class=\"header11\" group=\"Headers\" plugins=\"amp-main\" mbr-class=\"{'mbr-fullscreen': fullScreen}\">\n\n    <mbr-parameters>\n    <!-- Block parameters controls (Blue \"Gear\" panel) -->\n        <input type=\"checkbox\" title=\"Full Screen\" name=\"fullScreen\">\n        <input type=\"range\" inline=\"\" title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"6\" condition=\"fullScreen == false\">\n        <input type=\"range\" inline=\"\" title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"3\" condition=\"fullScreen == false\">\n        <input type=\"checkbox\" title=\"Show Title\" name=\"showTitle\" checked=\"\">\n        <input type=\"checkbox\" title=\"Show Text\" name=\"showText\" checked=\"\">\n        <input type=\"checkbox\" title=\"Show Buttons\" name=\"showButtons\" checked=\"\">\n        <input type=\"checkbox\" title=\"Image on Right/Left\" name=\"reverseContent\">\n        <fieldset type=\"background\" name=\"bg\">\n            <input type=\"image\" title=\"Background Image\" value=\"../_images/background9.jpg\">\n            <input type=\"color\" title=\"Background Color\" value=\"#ffffff\" selected=\"\">\n        </fieldset>\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type!='color'\" checked=\"\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#fce1ce\" condition=\"bg.type!='color' &amp;&amp; overlay\">\n        <input type=\"range\" inline=\"\" title=\"Overlay Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.2\" condition=\"bg.type!='color' &amp;&amp; overlay\">\n    <!-- End block parameters -->\n    </mbr-parameters>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay &amp;&amp; bg.type !== 'color'\"></div>\n    <div class=\"container\">    \n        <div class=\"mbr-row text-wrap\">\n            <div class=\"mbr-col-lg-6 mbr-col-md-12 text-column\">\n                <h1 class=\"mbr-section-title mbr-fonts-style align-left mbr-black l-spacing3\" mbr-theme-style=\"display-2\" data-app-selector=\".mbr-section-title\" mbr-if=\"showTitle\">Current News</h1>\n\n                <p class=\"mbr-fonts-style mbr-text align-left mbr-white\" mbr-theme-style=\"display-6\" mbr-if=\"showText\" data-app-selector=\".mbr-text, .mbr-section-btn,.btn-wrap\">\n                    Stay up-to-date on happenings within the BCI organization by reading our blog.<br><br><a href=\"https://blessingthechildren.wordpress.com/2018/09/10/delivering-dresses-hope/\">Delivering Dresses &amp; Hope</a><br><a href=\"https://blessingthechildren.wordpress.com/2018/06/20/english-competition-a-success/\">English Competition a Success</a><br><a href=\"https://blessingthechildren.wordpress.com/2018/06/08/shoes-for-every-child/\">Shoes for Every Child</a><br><a href=\"https://blessingthechildren.wordpress.com/2018/04/24/abenezer-kasu-in-his-own-words/\">Abenezer Kasu: In His Own Words</a>&nbsp;</p>\n                <div class=\"mbr-section-btn align-left\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove\" mbr-buttons=\"\" mbr-theme-style=\"display-4\"><a class=\"btn btn-md btn-primary\" href=\"https://blessingthechildren.wordpress.com/\" data-app-placeholder=\"Type Text\">\n                        BCI BLOG</a></div>\n            </div>\n            <div class=\"mbr-col-lg-6 mbr-col-md-12 video-wrap\">\n                <div class=\"image-block\">\n                    <amp-img src=\"@PROJECT_PATH@/assets/images/20180603-153725-resized-2-002-1080x1195.jpg\" layout=\"responsive\" width=\"740.18410041841\" height=\"819\" alt=\"Ethiopian Orphans Smile for the Camera\" class=\"mobirise-loader\">\n                        <div placeholder=\"\" class=\"placeholder\"></div>\n                        <img class=\"mbr-temp\" src=\"@PROJECT_PATH@/assets/images/20180603-153725-resized-2-002-1080x1195.jpg\" alt=\"Ethiopian Orphans Smile for the Camera\" title=\"Precious Smiles of Ethiopian Children\">\n                    </amp-img>\n                </div>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_customHTML": "<section class=\"header11\" group=\"Headers\" plugins=\"amp-main\" mbr-class=\"{'mbr-fullscreen': fullScreen}\">\n\n    <mbr-parameters>\n    <!-- Block parameters controls (Blue \"Gear\" panel) -->\n        <input type=\"checkbox\" title=\"Full Screen\" name=\"fullScreen\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"6\" condition=\"fullScreen == false\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"3\" condition=\"fullScreen == false\">\n        <input type=\"checkbox\" title=\"Show Title\" name=\"showTitle\" checked>\n        <input type=\"checkbox\" title=\"Show Text\" name=\"showText\" checked>\n        <input type=\"checkbox\" title=\"Show Buttons\" name=\"showButtons\" checked>\n        <input type=\"checkbox\" title=\"Image on Right/Left\" name=\"reverseContent\">\n        <fieldset type=\"background\" name=\"bg\">\n            <input type=\"image\" title=\"Background Image\" value=\"../_images/background9.jpg\">\n            <input type=\"color\" title=\"Background Color\" value=\"#ffffff\" selected>\n        </fieldset>\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type!='color'\" checked>\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#fce1ce\" condition=\"bg.type!='color' && overlay\">\n        <input type=\"range\" inline title=\"Overlay Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.2\" condition=\"bg.type!='color' && overlay\">\n    <!-- End block parameters -->\n    </mbr-parameters>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type !== 'color'\"></div>\n    <div class=\"container\">    \n        <div class=\"mbr-row text-wrap\">\n            <div class=\"mbr-col-lg-6 mbr-col-md-12 text-column\">\n                <h1 class=\"mbr-section-title mbr-fonts-style align-left mbr-black l-spacing3\" mbr-theme-style=\"display-2\" data-app-selector=\".mbr-section-title\" mbr-if=\"showTitle\">Current News</h1>\n\n                <p class=\"mbr-fonts-style mbr-text align-left mbr-white\" mbr-theme-style=\"display-6\" mbr-if=\"showText\" data-app-selector=\".mbr-text, .mbr-section-btn,.btn-wrap\">\n                    Stay up-to-date on happenings within the BCI organization by reading our blog.<br><br><a href=\"https://blessingthechildren.wordpress.com/2019/07/26/hooray-for-besha/\">Hooray for Besha</a><a href=\"https://blessingthechildren.wordpress.com/2019/05/06/training-future-leaders/\"><br></a><a href=\"https://blessingthechildren.wordpress.com/2019/07/08/international-pen-pals/\">International Pen Pals</a><br><a href=\"https://blessingthechildren.wordpress.com/2019/05/06/training-future-leaders/\">Training Future Leaders</a><br><a href=\"https://blessingthechildren.wordpress.com/2019/02/04/nathenaels-gift/\">Nathenael's Gift</a><br><a href=\"https://blessingthechildren.wordpress.com/2018/09/10/delivering-dresses-hope/\">Delivering Dresses &amp; Hope</a><br><a href=\"https://blessingthechildren.wordpress.com/2018/06/20/english-competition-a-success/\">English Competition a Success</a><br><a href=\"https://blessingthechildren.wordpress.com/2018/06/08/shoes-for-every-child/\">Shoes for Every Child</a><br><a href=\"https://blessingthechildren.wordpress.com/2018/04/24/abenezer-kasu-in-his-own-words/\">Abenezer Kasu: In His Own Words</a>&nbsp;</p>\n                <div class=\"mbr-section-btn align-left\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove\" mbr-buttons mbr-theme-style=\"display-4\"><a class=\"btn btn-md btn-primary\" href=\"https://blessingthechildren.wordpress.com/\" data-app-placeholder=\"Type Text\">\n                        BCI BLOG</a></div>\n            </div>\n            <div class=\"mbr-col-lg-6 mbr-col-md-12 video-wrap\">\n                <div class=\"image-block\">\n                    <amp-img src=\"@PROJECT_PATH@/assets/images/20180603-153725-resized-2-002-1080x1195.jpg\" layout=\"responsive\" width=\"741.0878661087867\" height=\"820\" alt=\"Ethiopian Orphans Smile for the Camera\" class=\"mobirise-loader\">\n                        <div placeholder class=\"placeholder\"></div>\n                        <img class=\"mbr-temp\" src=\"@PROJECT_PATH@/assets/images/20180603-153725-resized-2-002-1080x1195.jpg\" alt=\"Ethiopian Orphans Smile for the Camera\" title=\"Precious Smiles of Ethiopian Children\">\n                    </amp-img>\n                </div>\n            </div>\n        </div>\n    </div>\n</section>",
           "_cid": "r6z9Crx9MZ",
           "_anchor": "header11-18",
           "_protectedParams": [],
@@ -20090,7 +20090,7 @@
     "contact.html": {
       "settings": {
         "title": "Contact Us",
-        "order": 20,
+        "order": 18,
         "meta_descr": "Contact Blessing the Children International today to learn how you can help orphaned and impoverished children and widows in Ethiopia, Africa."
       },
       "components": [
@@ -20876,7 +20876,7 @@
     "feeding.html": {
       "settings": {
         "title": "Feeding Program",
-        "order": 7,
+        "order": 5,
         "meta_descr": "Children in Ethiopia, Africa are starving and dying every day. You can change a life and feed a child for less than $1 a day. Help us give hope to the hopeless."
       },
       "components": [
@@ -21880,7 +21880,7 @@
     "donate.html": {
       "settings": {
         "title": "Donate Now",
-        "order": 4,
+        "order": 3,
         "meta_descr": "There is no shortage of need. Change the life of an orphan in Ethiopia, Africa. Provide food, clothing, an education, and more. You can make a difference!"
       },
       "components": [
@@ -22653,7 +22653,7 @@
     "urgentneeds.html": {
       "settings": {
         "title": "Urgent Needs",
-        "order": 18,
+        "order": 16,
         "meta_descr": "Orphaned children in Ethiopia, Africa are the poorest of the poor. You can help meet an urgent need for as little as $15. You can make a difference today!"
       },
       "components": [
