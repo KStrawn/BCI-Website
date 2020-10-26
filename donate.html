@@ -25,7 +25,7 @@ body{font-family: Roboto;}blockquote{border-color: #a3cc7a;}.display-1{font-fami
   <script async  src="https://cdn.ampproject.org/v0.js"></script>
   <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
   <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
-<!--  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script> -->
+  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
   <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
   
   
@@ -152,72 +152,73 @@ body{font-family: Roboto;}blockquote{border-color: #a3cc7a;}.display-1{font-fami
                 
                 <p class="mbr-text mbr-fonts-style display-7"><br><strong>One-Time Gift</strong>&nbsp;- Specify the purpose of the donation and click the Donate button. You will be able to enter your contribution amount on the following page. Use this option to pay for your Mission Trip or Internship fees, to support a missionary or intern, or to make a gift of any amount for the ministry. Be sure to let us know what the donation is for in the comment box.<br>
                      </p>
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                            <input type="hidden" name="cmd" value="_s-xclick">
-                            <input type="hidden" name="hosted_button_id" value="LFTJZ24NMNCQY">
-                            <table>
-                            <tr><td><input type="hidden" name="on0" value="Donation for:">Donation for:</td></tr><tr><td><select name="os0">
-                                <option value="Where Needed Most">Where Needed Most </option>
-                                <option value="Mission Trip (please specify below)">Mission Trip (please specify below) </option>
-                                <option value="Other (please specify below)">Other (please specify below) </option>
-                            </select> </td></tr>
-                            <tr><td><input type="hidden" name="on1" value="To be used for:">To be used for:</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
-                            </table>
-                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                            </form>
+<form method="post" target="_top" action-xhr="https://formoid.net/api/amp-form/push">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="LFTJZ24NMNCQY">
+<table>
+<tbody><tr><td><input type="hidden" name="on0" value="Donation for:">Donation for:</td></tr><tr><td><select name="os0">
+              <option value="Where Needed Most">Where Needed Most </option>
+              <option value="Mission Trip (please specify below)">Mission Trip (please specify below) </option>
+              <option value="Other (please specify below)">Other (please specify below) </option>
+</select> </td></tr>
+<tr><td><input type="hidden" name="on1" value="To be used for:">To be used for:</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
+</tbody></table>
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
                 
                 <p class="mbr-text mbr-fonts-style display-7"><br><strong>Child Sponsorship: $30/month</strong>&nbsp;- A dollar a day makes the difference between life and death for an orphaned child, and provides food, clothing and an educatinon.<br>
                      </p>
                 
-                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                        <input type="hidden" name="cmd" value="_s-xclick">
-                        <input type="hidden" name="hosted_button_id" value="X3JH9CUYMZQR2">
-                        <table>
-                        <tr><td><input type="hidden" name="on0" value="Child's name (optional)">Child's name (optional)</td></tr><tr><td><input type="text" name="os0" maxlength="200"></td></tr>
-                        </table>
-                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                        </form>
+ <form method="post" target="_top" action-xhr="https://formoid.net/api/amp-form/push">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="X3JH9CUYMZQR2">
+<table>
+<tbody><tr><td><input type="hidden" name="on0" value="Child's name (optional)">Child's name (optional)</td></tr><tr><td><input type="text" name="os0" maxlength="200"></td></tr>
+</tbody></table>
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
                    
                 <p class="mbr-text mbr-fonts-style display-7"><br><strong>Child Sponsorship: $90/month</strong>&nbsp;- Some sponsors prefer to be a child's only sponsor by supporting them with $90/month - the actual cost to fully care for raising a child in Ethiopia.<br>
                      </p>
-                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                        <input type="hidden" name="cmd" value="_s-xclick">
-                        <input type="hidden" name="hosted_button_id" value="3Z6JD5RH9WR5N">
-                        <table>
-                        <tr><td><input type="hidden" name="on0" value="Child's name (optional)">Child's name (optional)</td></tr><tr><td><input type="text" name="os0" maxlength="200"></td></tr>
-                        </table>
-                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                        </form>
+                <form method="post" target="_top" action-xhr="https://formoid.net/api/amp-form/push">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="3Z6JD5RH9WR5N">
+<table>
+<tbody><tr><td><input type="hidden" name="on0" value="Child's name (optional)">Child's name (optional)</td></tr><tr><td><input type="text" name="os0" maxlength="200"></td></tr>
+</tbody></table>
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
                   
                 <p class="mbr-text mbr-fonts-style display-7"><br><strong>Other Amount</strong>&nbsp;- Some popular amounts for monthly donations are available here. For amounts not listed, please contact our office.<br>
                      </p>
-                
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-    <input type="hidden" name="cmd" value="_s-xclick">
-    <input type="hidden" name="hosted_button_id" value="RT9NEETZCAQEU">
-    <table>
-    <tr><td><input type="hidden" name="on0" value="Sponsorship Level">Sponsorship Level</td></tr><tr><td><select name="os0">
-        <option value="$15 per month">$15 per month : $15.00 USD - monthly</option>
-        <option value="$22.50 per month">$22.50 per month : $22.50 USD - monthly</option>
-        <option value="$30 per month">$30 per month : $30.00 USD - monthly</option>
-        <option value="$45 per month">$45 per month : $45.00 USD - monthly</option>
-        <option value="$50 per month">$50 per month : $50.00 USD - monthly</option>
-        <option value="$60 per month">$60 per month : $60.00 USD - monthly</option>
-        <option value="$90 per month">$90 per month : $90.00 USD - monthly</option>
-        <option value="$300 per month">$300 per month : $300.00 USD - monthly</option>
-        <option value="$500 per month">$500 per month : $500.00 USD - monthly</option>
-        <option value="$750 per month">$750 per month : $750.00 USD - monthly</option>
-    </select> </td></tr>
-    <tr><td><input type="hidden" name="on1" value="Comment or Child's Name">Comment or Child's Name</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
-    </table>
-    <input type="hidden" name="currency_code" value="USD">
-    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-    </form>
-
+                <form method="post" target="_top" action-xhr="https://formoid.net/api/amp-form/push">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="RT9NEETZCAQEU">
+<table>
+<tbody><tr><td><input type="hidden" name="on0" value="Sponsorship Level">Sponsorship Level</td></tr><tr><td><select name="os0">
+	<option value="$15 per month">$15 per month : $15.00 USD - monthly</option>
+	<option value="$22.50 per month">$22.50 per month : $22.50 USD - monthly</option>
+	<option value="$30 per month">$30 per month : $30.00 USD - monthly</option>
+	<option value="$45 per month">$45 per month : $45.00 USD - monthly</option>
+	<option value="$60 per month">$60 per month : $60.00 USD - monthly</option>
+	<option value="$90 per month">$90 per month : $90.00 USD - monthly</option>
+	<option value="$300 per month">$300 per month : $300.00 USD - monthly</option>
+	<option value="$500 per month">$500 per month : $500.00 USD - monthly</option>
+	<option value="$750 per month">$750 per month : $750.00 USD - monthly</option>
+	<option value="$1,000 per month">$1,000 per month : $1,000.00 USD - monthly</option>
+</select> </td></tr>
+<tr><td><input type="hidden" name="on1" value="Comment or Child's Name">Comment or Child's Name</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
+</tbody></table>
+<input type="hidden" name="currency_code" value="USD">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
 
                   
                 <p class="mbr-text mbr-fonts-style display-7"><br>Blessing the Children International is a 501(c)(3) nonprofit organization. Your gifts are tax deductible as allowed by law. Donations can be made by mailing a check to Blessing the Children International, or online through PayPal. A PayPal account is not required to make a donation. Upon clicking on the "Donate" or "Subscribe", you will be redirected to the PayPal website to complete your transaction.<br>
@@ -298,7 +299,7 @@ body{font-family: Roboto;}blockquote{border-color: #a3cc7a;}.display-1{font-fami
                     <div class="form-wrap mbr-col-lg-12 mbr-col-md-6 mbr-col-sm-12" data-form-type="formoid">
                         <h3 class="mbr-text mbr-bold mbr-fonts-style group-title display-5">
                             Stay in Touch</h3>
-                        <form class="mbr-form" method="post" target="_top" action-xhr="https://formoid.net/api/amp-form/push" data-form-title="Mobirise Form"><input type="hidden" name="email" data-form-email="true" value="tzKDNuz6wFGE7s0A0dF9TVr1hfGtdfDhpBIaSjKWduwxgI5T7o1oty9xuQ/g6kAUmEi2qXi5ChDEmfe1+l+cVFQTBPP6LOp2+scnNlF0zEgGfrt4a882ogJN59Z5F4pL.uTjekcldJm0LtVODhmvonMS6DOvZvozqWG4o+s+vIWUBdtL4dgBsg69Y/tERs6fnT2HLTnw8scM+bkVbpvhWcb1Bio9vTYsCjK/W6ZXrYi66ryAh0udNTiubFEw9zV1o">
+                        <form class="mbr-form" method="post" target="_top" action-xhr="https://formoid.net/api/amp-form/push" data-form-title="Mobirise Form"><input type="hidden" name="email" data-form-email="true" value="3Xo9i5nM+d8ePsekcv9kvtpBGCiSY9gLgXfEKt5DiUdY/InNBT2mkzdw9IJr2LJy+KCuvMKD14xX2aqzMxrQ5NvA6ObeCKmbGyD4lnDCcfIERZDAHqM3C4qgdNtbziYL.hVxA7tVlL3qeUrjwR9sBT1rb7Nw++YOsVrZ8CFF1ke/wJrOunURYd0OnGvLlBtmJ1zBOfXOHmTjIWG2F/KT/8Q+mVWKUPpKphEfEH/qNJI3GLYLXnsScPedfIBMFS6z4">
                             <div submit-success="">
                                 <template data-form-alert="" type="amp-mustache">Subscription successful!</template>
                             </div>
