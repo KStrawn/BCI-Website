@@ -67,21 +67,6 @@ body{font-family: Roboto;}blockquote{border-color: #a3cc7a;}.display-1{font-fami
       </div>
     </amp-sidebar>
 <amp-animation id="cartanim" layout="nodisplay" trigger="visibility"><script type="application/json">{"duration": ".5s","iterations": "3","keyframes": {"opacity": [0,0,0.7,1]},"selector": ".pulse-button"}</script></amp-animation><amp-script src="assets/shopping-cart/cart.js" height="2" width="100" layout="responsive"><div class="shoping-cart-wrapper" data-amp-bind-class="cart.items.length ? &quot;shoping-cart-wrapper show&quot; : &quot;shoping-cart-wrapper&quot; "><a class="shopping-cart" on="tap:AMP.setState({showLightbox: true})"><span class="mbri-shopping-cart mbr-iconfont"><svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M0.607 4.135c-0.451-0.006-0.667 0.33-0.667 0.667s0.216 0.673 0.667 0.667h3.469l3.214 14.148c0.002 0.009 0.005 0.017 0.008 0.026 0.114 0.423 0.29 0.847 0.607 1.203s0.814 0.622 1.37 0.622h17.951c0.557 0 1.054-0.272 1.367-0.628s0.488-0.774 0.607-1.188l2.688-9.333c0.18-0.627-0.105-1.244-0.503-1.609s-0.914-0.576-1.471-0.576h-21.305c-0.451-0.006-0.667 0.33-0.667 0.667s0.216 0.673 0.667 0.667h21.305c0.472 0 0.759 0.233 0.693 0.482l-2.688 9.333c-0.166 0.619-0.381 0.852-0.693 0.852h-17.951c-0.183 0-0.255-0.042-0.372-0.174-0.116-0.131-0.237-0.373-0.315-0.659l-3.328-14.648c-0.069-0.304-0.34-0.519-0.651-0.518zM9.94 12.135c-0.369 0-0.667 0.297-0.667 0.667s0.297 0.667 0.667 0.667h17.333c0.369 0 0.667-0.297 0.667-0.667s-0.297-0.667-0.667-0.667zM11.273 16.135c-0.369 0-0.667 0.297-0.667 0.667s0.297 0.667 0.667 0.667h14.667c0.369 0 0.667-0.297 0.667-0.667s-0.297-0.667-0.667-0.667zM10.607 22.802c-1.465 0-2.667 1.202-2.667 2.667s1.202 2.667 2.667 2.667c1.465 0 2.667-1.202 2.667-2.667s-1.202-2.667-2.667-2.667zM25.273 22.802c-1.465 0-2.667 1.202-2.667 2.667s1.202 2.667 2.667 2.667c1.465 0 2.667-1.202 2.667-2.667s-1.202-2.667-2.667-2.667zM10.607 24.135c0.744 0 1.333 0.589 1.333 1.333s-0.589 1.333-1.333 1.333c-0.744 0-1.333-0.589-1.333-1.333s0.589-1.333 1.333-1.333zM25.273 24.135c0.744 0 1.333 0.589 1.333 1.333s-0.589 1.333-1.333 1.333c-0.744 0-1.333-0.589-1.333-1.333s0.589-1.333 1.333-1.333z"></path></svg></span><span class="cart-counter pulse-button" data-amp-bind-text="cart.items.length"></span></a></div></amp-script><amp-lightbox id="my-bindable-lightbox" [open]="showLightbox" layout="nodisplay"><div class="lightbox-close" role="button" tabindex="0" on="tap:AMP.setState({showLightbox: false})"></div><div class="lightbox" role="button" tabindex="0"><div class="shoping-cart-lb-wrapper"><h4 class="mbr-shoping-title mbr-fonts-style mbr-bold display-7">Your Order:</h4><hr><amp-list width="auto" layout="fixed-height" items="items" single-item="" id="cart-list" [src]="cart" height="0" [height]="cart.items.length * 50 + 77 || 50" binding="no"><template type="amp-mustache">{{#items}}<div class="mbr-row product"><h6 class="mbr-col mbr-fonts-style product-title display-7">{{item_name}}</h6><p class="mbr-col-auto product-price mbr-fonts-style display-7">{{amount}} USD</p><div class="mbr-col-auto align-right"><amp-script class="amp-script-remove-btn" src="assets/shopping-cart/item.js" layout="fill"><a class="remove-btn display-7" on="tap:AMP.setState({cart: {items:cart.items.filter(item => item.id != {{id}}),total:cart.total-{{amount}}}})"></a></amp-script></div></div>{{/items}}{{#items.length}}<hr><p class="product-total align-right mbr-fonts-style display-7"><span class="mbr-bold">{{total}}</span> USD for <span class="mbr-bold">{{items.length}}</span> items</p>{{/items.length}}{{^items}}<p class="product-empty mbr-bold mbr-fonts-style display-5">Cart is Empty</p>{{/items}}</template></amp-list><div class="cart-footer align-right"><a class="paypal-btn" [class]="!cart.items.length ? 'paypal-btn disabled' : 'paypal-btn'" [href]="'https://www.paypal.com/us/cgi-bin/webscr?cmd=_cart&amp;business=KStrawn@blessingthechildren.org&amp;upload=1&amp;currency_code=USD' +cart.items.map((item, i) => '&amp;item_name_' + (i+1) + '=' + encodeURIComponent(item.item_name) + '&amp;amount_' + (i+1) + '=' + encodeURIComponent(item.amount)).join('')" target="_blank">Check out with<amp-img layout="fixed" height="18" width="60" src="../assets/shopping-cart/paypal_btn.svg"></amp-img></a></div></div></div></amp-lightbox>
-
-<!-- Analytics -->
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-57742128-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-57742128-1');
-</script>
-
-<!-- /Analytics -->
-
-
   
   <section class="menu horizontal-menu cid-rY8RSclWBB" id="menu1-4q">
 
@@ -145,7 +130,7 @@ body{font-family: Roboto;}blockquote{border-color: #a3cc7a;}.display-1{font-fami
 
     <div class="container">
         <div class="image-block">
-            <amp-img src="assets/images/christmas-red-1466x702.png" layout="responsive" class="mobirise-loader" width="666.1737891737891" height="319" alt="">
+            <amp-img src="assets/images/christmas-red-1466x702.png" layout="responsive" class="mobirise-loader" width="665.9774871794872" height="318.906" alt="">
                 <div placeholder="" class="placeholder">
                                 <div class="mobirise-spinner">
                                     <em></em>
@@ -389,7 +374,7 @@ body{font-family: Roboto;}blockquote{border-color: #a3cc7a;}.display-1{font-fami
             <div class="card mbr-col-sm-12 mbr-col-md-6 last-child">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <amp-img src="assets/images/desk-2009-584x438.jpg" layout="responsive" height="406" class="mobirise-loader" width="541.3333333333333" alt="Give an Ethiopian Child a New Outfit" title="Complete Outfit for Ethiopian Child">
+                        <amp-img src="assets/images/desk-2009-584x438.jpg" layout="responsive" height="405.75" class="mobirise-loader" width="541" alt="Give an Ethiopian Child a New Outfit" title="Complete Outfit for Ethiopian Child">
                             <div placeholder="" class="placeholder">
                                 <div class="mobirise-spinner">
                                     <em></em>
@@ -556,7 +541,7 @@ body{font-family: Roboto;}blockquote{border-color: #a3cc7a;}.display-1{font-fami
             <div class="card mbr-col-sm-12 mbr-col-md-6 mbr-col-lg-4 first-row-card">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <amp-img src="assets/images/merga-hordofa-6-340x296.jpg" layout="responsive" width="350.33783783783787" class="mobirise-loader" height="305" alt="Merga Hordofa" title="Merga Hordofa">
+                        <amp-img src="assets/images/merga-hordofa-6-340x296.jpg" layout="responsive" width="350.625" class="mobirise-loader" height="305.25" alt="Merga Hordofa" title="Merga Hordofa">
                             <div placeholder="" class="placeholder">
                                 <div class="mobirise-spinner">
                                     <em></em>
@@ -579,7 +564,7 @@ body{font-family: Roboto;}blockquote{border-color: #a3cc7a;}.display-1{font-fami
             <div class="card mbr-col-sm-12 mbr-col-md-6 mbr-col-lg-4 first-row-card">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <amp-img src="assets/images/derartu-702x860.jpg" layout="responsive" height="430" class="mobirise-loader" width="351" alt="Derartu Mesfen" title="Derartu Mesfen">
+                        <amp-img src="assets/images/derartu-702x860.jpg" layout="responsive" height="429.531" class="mobirise-loader" width="350.6171651162791" alt="Derartu Mesfen" title="Derartu Mesfen">
                             <div placeholder="" class="placeholder">
                                 <div class="mobirise-spinner">
                                     <em></em>
@@ -602,7 +587,7 @@ body{font-family: Roboto;}blockquote{border-color: #a3cc7a;}.display-1{font-fami
             <div class="card mbr-col-sm-12 mbr-col-md-6 mbr-col-lg-4 last-child">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <amp-img src="assets/images/daremyelesh-girma-6-340x296.jpg" layout="responsive" class="mobirise-loader" height="305" width="350.33783783783787" alt="Daremyelesh GIrma" title="Daremyelesh GIrma">
+                        <amp-img src="assets/images/daremyelesh-girma-6-340x296.jpg" layout="responsive" class="mobirise-loader" height="305.25" width="350.625" alt="Daremyelesh GIrma" title="Daremyelesh GIrma">
                             <div placeholder="" class="placeholder">
                                 <div class="mobirise-spinner">
                                     <em></em>
@@ -642,7 +627,7 @@ body{font-family: Roboto;}blockquote{border-color: #a3cc7a;}.display-1{font-fami
                 <div class="triangle"></div>
                 <div class="footer-wrap">
                     <div class="card-img">
-                        <amp-img src="assets/images/abreham-gudu-mohammed-6-144x125.jpg" layout="responsive" width="72.576" height="63" alt="" class="mobirise-loader">
+                        <amp-img src="assets/images/abreham-gudu-mohammed-6-144x125.jpg" layout="responsive" width="72" height="62.5" alt="" class="mobirise-loader">
                             <div placeholder="" class="placeholder">
                                 <div class="mobirise-spinner">
                                     <em></em>
@@ -669,7 +654,7 @@ body{font-family: Roboto;}blockquote{border-color: #a3cc7a;}.display-1{font-fami
                 <div class="triangle"></div>
                 <div class="footer-wrap">
                     <div class="card-img">
-                        <amp-img src="assets/images/hiwot-semeneh-6-144x125.jpg" layout="responsive" width="72.576" height="63" alt="" class="mobirise-loader">
+                        <amp-img src="assets/images/hiwot-semeneh-6-144x125.jpg" layout="responsive" width="72" height="62.5" alt="" class="mobirise-loader">
                             <div placeholder="" class="placeholder">
                                 <div class="mobirise-spinner">
                                     <em></em>
@@ -696,7 +681,7 @@ body{font-family: Roboto;}blockquote{border-color: #a3cc7a;}.display-1{font-fami
                 <div class="triangle"></div>
                 <div class="footer-wrap">
                     <div class="card-img">
-                        <amp-img src="assets/images/selamawit-yohannes-6-144x125.jpg" layout="responsive" width="72.576" height="63" alt="" class="mobirise-loader">
+                        <amp-img src="assets/images/selamawit-yohannes-6-144x125.jpg" layout="responsive" width="72" height="62.5" alt="" class="mobirise-loader">
                             <div placeholder="" class="placeholder">
                                 <div class="mobirise-spinner">
                                     <em></em>
@@ -760,7 +745,7 @@ body{font-family: Roboto;}blockquote{border-color: #a3cc7a;}.display-1{font-fami
     <div class="container">
         <div class="mbr-row mbr-justify-content-center">
             <div class="image-block mbr-col-sm-12 mbr-col-md-6 mbr-col-lg-3">
-                <amp-img src="assets/images/new-logo-all-white-255x122.png" layout="responsive" width="177.72914754098363" height="85.0312" class="mobirise-loader" alt="Blessing the Children International">
+                <amp-img src="assets/images/new-logo-all-white-255x122.png" layout="responsive" width="127.72866393442625" height="61.1094" class="mobirise-loader" alt="Blessing the Children International">
                     <div placeholder="" class="placeholder">
                                 <div class="mobirise-spinner">
                                     <em></em>
