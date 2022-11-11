@@ -81,6 +81,7 @@
 			height: 56px;
 			background-color: #0A0C21;
 			margin-top: 10px;
+			margin-bottom: 20px;
 			display: none;
 			font-size: 20pt;
             font-weight: bold;
@@ -120,6 +121,37 @@
 			display: block;
 		}
 
+		.filter-item-list
+		{
+			margin-bottom: 15px;
+		}
+
+		.filter-item
+		{
+			display: inline-block;
+			margin-right: 15px;
+		}
+
+		.filter-item label
+		{
+			font-weight: bold;
+		}
+
+		#gender-filter
+		{
+			min-width: 150px;
+		}
+
+		#age-filter
+		{
+			min-width: 175px;
+		}
+
+		#no-children
+		{
+			display: none;
+		}
+
 	</style>
 </head>
 
@@ -135,16 +167,6 @@
 	<!--<h1><span style="color: #F06000; font-family: 'Reem Kufi', sans-serif;font-size: 26pt;">Blessing the Children International</span></h1>-->
 	<div>
 		<p style="font-family: 'Reem Kufi', sans-serif;font-size: 4rem;margin-left: 20px;margin-top: 26px;margin-bottom: 20px; color: #F06000;"> Waiting for Sponsorship</p>
-
-		<div style="float: right; margin-right: 20px">
-			<label for="child-filter">Filter</label>
-			<select id="child-filter">
-				<option value="sponsorship-needed" selected="selected">Sponsorship Needed</option>
-				<option value="all">All Children</option>
-				<option value="girls">Girls</option>
-				<option value="boys">Boys</option>
-			</select>
-		</div>
 	</div>
 
 	<div style="margin-left: 20px">
@@ -152,7 +174,54 @@
 			All it takes is $1 a day to make a real difference. <br />
 			We invite you to read their stories and learn more about these precious children. </p>
 
+		<div class="filter-item-list">
+			<div class="filter-item">
+				<label>Gender</label>
+				<select id="gender-filter">
+					<option value="">No Preference</option>
+					<option value="Male">Boy</option>
+					<option value="Female">Girl</option>
+				</select>
+			</div>
+
+			<div class="filter-item">
+				<label>Age</label>
+				<select id="age-filter">
+					<option value="">Any age</option>
+				</select>
+			</div>
+
+			<div class="filter-item">
+				<label>Birthday</label>
+				<select id="month-filter">
+					<option value="">Month</option>
+					<option value="1">January</option>
+					<option value="2">February</option>
+					<option value="3">March</option>
+					<option value="4">April</option>
+					<option value="5">May</option>
+					<option value="6">June</option>
+					<option value="7">July</option>
+					<option value="8">August</option>
+					<option value="9">September</option>
+					<option value="10">October</option>
+					<option value="11">November</option>
+					<option value="12">December</option>
+				</select>
+				<select id="day-filter">
+					<option value="">Day</option>
+				</select>
+			</div>
+
+			<div class="filter-item">
+				<label>First Name</label>
+				<input type="text" id="name-filter" name="name" value="" placeholder="First Name">
+			</div>
+		</div>
+
 		<div id="child-list" style="font-family: 'Roboto', sans-serif;font-size: 16pt"></div>
+
+		<div id="no-children"><p>No children match your filter criteria</p></div>
 		<!--End of body-->
 
 		<input type="button" value="Show More" id="show-more" />
@@ -175,13 +244,13 @@
 	</script>
 
 	<script id="child-template" type="text/x-handlebars-template">
-		<div class="child" data-child-id="{{id}}">
-			<img src="{{imageUrl}}" class="child-image" />
+		<div class="child" data-child-id="{{Id}}">
+			<img src="{{Photo}}" class="child-image" />
 
 			<div class="child-body">
-                <h2 style="font-family: 'Roboto Condensed', sans-serif;font-size: 22pt">{{fullName}}</h2>
+                <h2 style="font-family: 'Roboto Condensed', sans-serif;font-size: 22pt">{{ChildName}}</h2>
                 
-				<p>I am <b> {{age}} </b> years old <span style="float:right;">
+				<p>I am <b> {{ageString}} </b> {{yearsOldString}} <span style="float:right;">
 				<button class="moreinfobutton">Child Info...</button>
 				<p>I am a <b> {{genderString}} </b> </p>
 				<p>I've been waiting <b> {{waitingString}}</b>
@@ -202,46 +271,37 @@
 							</button>
 
 						    <div style="">
-						    	<h3>{{fullName}}</h3>
+						    	<h3>{{ChildName}}</h3>
 						    </div>
 						</div>
 
-
-						<!--<div style="width: 1100px">
-							<div style="width: auto; overflow: hidden; margin-right: 50px">
-								
-							</div>
-
-							
-						</div>-->
-
 						<div style="overflow: auto;">
-							<div class="child-modal-image" style="background-image: url('{{imageUrl}}')"></div>
+							<div class="child-modal-image" style="background-image: url('{{Photo}}')"></div>
 
 							<div class="child-modal-info">
 								<div class="container-fluid">
 									<div class="row">
 										<div class="col-md-6">
-											<span>Age: {{age}}</span>
+											<span>Age: {{ageString}}</span>
 											<span>Birthday: {{birthdayString}}</span>
-											<span>Gender: {{gender}}</span>
-											<span>Language: {{language}}</span>
-											<span>Ethnic Background: {{ethnicBackgroundString}}</span>
+											<span>Gender: {{Gender}}</span>
+											<span>Language: {{NativeLanguage}}</span>
+											<span>Ethnic Background: {{EthnicBackground}}</span>
 										</div>
 
 										<div class="col-md-6">
 											<span>Location: Ethiopia, Africa</span>
-											<span>School: {{school}}</span>
+											<span>School: {{SchoolName}}</span>
 											<span>Grade: {{gradeString}}</span>
-											<span>Sisters: {{numSisters}}</span>
-											<span>Brothers: {{numBrothers}}</span>
+											<span>Sisters: {{Sisters}}</span>
+											<span>Brothers: {{Brothers}}</span>
 										</div>
 									</div>
 
 									<div class="row">
 										<div class="col-md-12">
 											<div style="margin-top: 20px">
-												{{story}}
+												{{Story}}
 											</div>
 										</div>
 									</div>
@@ -260,10 +320,15 @@
 						</div>
 
 
-						<div class="container-fluid" style="padding: 0">
+						<div class="container-fluid" style="padding: 0; margin-top: 10px">
 							<div class="row">
 								<div class="col-md-6">
-									<span>{{nicknameString}} still needs ${{sponsorshipNeeded}}/month to be fully sponsored.</span>
+									{{#if sponsorshipNeededString}}
+										<span>{{nicknameString}} still needs ${{sponsorshipNeededString}}/month to be fully sponsored.</span>
+									{{else}}
+										<span>{{nicknameString}} is fully sponsored.</span>
+									{{/if}}
+									
 								</div>
 
 								<div class="col-md-6">
@@ -308,13 +373,30 @@
 	</script>
 
 	<script type="text/javascript">
+		window.genderFilter = "";
+		window.ageFilter = "";
+		window.birthMonthFilter = "";
+		window.birthDayFilter = "";
+		window.nameFilter = "";
+		window.displayedChildren = 0;
+		window.childrenToDisplay = 6;
 
 		$(function() {
+			$.Deferred.exceptionHook = function (err, stackTrace) {
+			  console.log(err);
+			};
+
+			populateDaysFilter(31);
+
+			var url = 'https://prod-79.westus.logic.azure.com/workflows/26f943c46ee2419c96ab35a875591654/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=uyi7IHJRzhsqP2SPaptUMRmepVxN85KuIxtEhUiA8YQ';
+			var blobUrl = 'https://bcifiles.blob.core.windows.net/children/childlist.JSON';
+
 			$.ajax({
 				type: 'GET',
-				url: 'https://bci-sharepointcall.azurewebsites.net/api/children',
-				dataType: 'jsonp',
-				jsonpCallback: 'receiveChildrenData'
+				url: blobUrl,
+				dataType: 'json'
+			}).then(function(data) {
+				receiveChildrenData(data);
 			});
 		});
 
@@ -324,86 +406,144 @@
 
 			var modalTemplateSource = document.getElementById("child-modal-template").innerHTML;
 			var modalTemplate = Handlebars.compile(modalTemplateSource);
-			
-			var minimumAge = new Date();
-			minimumAge.setFullYear( minimumAge.getFullYear() - 13 );
 
-			var children = filterSponsorshipNeeded(allChildren, minimumAge);
-			console.log(children);
-			
-			setChildrenData(children, template);
+			allChildren = allChildren.map(function(child, i) {
+				var withData = calcData(child);
+				withData.Id = i;
+				return withData;
+			});
+
+			var ages = allChildren.map(function(child) { return child.age })
+  			.filter(function(value, index, self) { return self.indexOf(value) === index })
+  			.sort(function(a, b) { return a - b });
+
+  		ages.forEach(function(age) {
+  			$('#age-filter').append($('<option>', {
+					value: age,
+					text: age == 0 ? 'less than 1 year' : age
+				}));
+  		});
+
+			setChildrenData(allChildren, template);
+
+			$('#show-more').show();
 
 			$(document).on('click', '.moreinfobutton', function(e) {
 				var childElement = e.target.closest('.child');
 				var childId = $(childElement).data('child-id');
-				var child = allChildren.filter(function(c) { return c.id == childId; })[0];
+				var child = allChildren.filter(function(c) { return c.Id == childId; })[0];
 
 				showModal(modalTemplate, child);
 
 				//console.log(child);
 			});
 
-			$('#child-filter').change(function() {
-				$('#child-list').empty();
-
-				var selectedFilter = $(this).val();
-				if (selectedFilter == 'sponsorship-needed') {
-					children = filterSponsorshipNeeded(allChildren, minimumAge);
-					setChildrenData(children, template);
-				} else if (selectedFilter == 'all') {
-					children = filterActiveForSponsorship(allChildren);
-					setChildrenData(children, template);
-				} else if (selectedFilter == 'girls') {
-					children = filterGirls(allChildren);
-					setChildrenData(children, template);
-				} else if (selectedFilter == 'boys') {
-					children = filterBoys(allChildren);
-					setChildrenData(children, template);
-				}
+			$('#gender-filter').change(function() {
+				window.genderFilter = $(this).val();
+				// console.log(window.genderFilter);
+				setChildrenData(applyFilters(allChildren), template);
 			});
+
+			$('#age-filter').change(function() {
+				window.ageFilter = $(this).val();
+				// console.log(window.genderFilter);
+				setChildrenData(applyFilters(allChildren), template);
+			});
+
+			$('#month-filter').change(function() {
+				window.birthMonthFilter = $(this).val();
+				// console.log(window.birthMonthFilter);
+				setChildrenData(applyFilters(allChildren), template);
+			});
+
+			$('#day-filter').change(function() {
+				var value = $(this).val();
+				window.birthDayFilter = value;
+				// console.log(window.birthDayFilter);
+				setChildrenData(applyFilters(allChildren), template);
+			});
+
+			$('#name-filter').on('input', function() {
+				window.nameFilter = $(this).val();
+				// console.log(window.nameFilter);
+				setChildrenData(applyFilters(allChildren), template);
+			});
+
+			$('#show-more').click(function() {
+				window.childrenToDisplay += 3;
+
+				displayChildren(window.filteredChildren, template);
+			});
+		}
+
+		function applyFilters(children)
+		{
+			if (window.genderFilter != '')
+			{
+				children = children.filter(function(c) { return c.Gender == window.genderFilter; });
+			}
+
+			if (window.ageFilter != '')
+			{
+				children = children.filter(function(c) { return c.age == window.ageFilter; });
+			}
+
+			if (window.birthMonthFilter != '')
+			{
+				children = children.filter(function(c) { return c.birthday.month() == window.birthMonthFilter - 1; });
+			}
+
+			if (window.birthDayFilter != '')
+			{
+				children = children.filter(function(c) { return c.birthday.date() == window.birthDayFilter; });
+			}
+
+			if (window.nameFilter != '')
+			{
+				children = children.filter(function(c) { return c.ChildName.toLowerCase().startsWith(window.nameFilter.toLowerCase()); });
+			}
+
+			var currentYear = new Date().getFullYear();
+			var daysInMonth = window.birthMonthFilter != '' ? getDaysInMonth(currentYear, window.birthMonthFilter) : 31;
+
+			populateDaysFilter(daysInMonth);
+
+			return children;
 		}
 
 		function setChildrenData(children, template) {
-			window.nextIndex = 0;
-			$('#show-more').off();
+			$('#child-list').empty();
+			window.displayedChildren = 0;
+			window.filteredChildren = children;
+
+			if (children.length == 0)
+			{
+				$('#no-children').show();
+			}
+			else
+			{
+				$('#no-children').hide();
+			}
             
-			appendNewRow(children, template);
-			$('#show-more').show();
+			displayChildren(children, template);
+		}
 
-			$('#show-more').click(function() {
+		function displayChildren(children, template)
+		{
+			while (window.displayedChildren < window.childrenToDisplay &&
+						window.displayedChildren < children.length)
+			{
 				appendNewRow(children, template);
-				if (nextIndex == children.length)
-					$('#show-more').attr("disabled", true);
-			});
-		}
-
-		function filterSponsorshipNeeded(allChildren, minimumAge) {
-			return allChildren.filter(function(c) { return c.activeForSponsorship && c.sponsorshipNeeded > 0 && new Date(c.birthday) > minimumAge; })
-				.sort(firstBy("priority", -1).thenBy("sponsorshipNeeded", -1));
-		}
-
-		function filterActiveForSponsorship(allChildren) {
-			return allChildren.filter(function(c) { return c.activeForSponsorship; })
-				.sort(firstBy("fullName"));
-		}
-
-		function filterGirls(allChildren) {
-			return allChildren.filter(function(c) { return c.activeForSponsorship && c.gender.toUpperCase() === 'FEMALE'; })
-				.sort(firstBy("fullName"));
-		}
-
-		function filterBoys(allChildren) {
-			return allChildren.filter(function(c) { return c.activeForSponsorship && c.gender.toUpperCase() === 'MALE'; })
-				.sort(firstBy("fullName"));
+			}
 		}
 
 		function appendNewRow(children, template) {
 			var htmlArray = [];
+			var childrenToAdd = Math.min(children.length - window.displayedChildren, 3);
 
-			for (var i = 0; i < 3 && nextIndex < children.length; i++) {
-				var child = calcData(children[nextIndex]);
+			for (var i = window.displayedChildren; i < window.displayedChildren + childrenToAdd; i++) {
+				var child = children[i];
 				htmlArray.push(template(child));
-				nextIndex++;
 			}
 
 			if (htmlArray.length == 0) return;
@@ -413,20 +553,33 @@
 			newDiv.innerHTML = htmlArray.join('');
 
 			document.getElementById('child-list').appendChild(newDiv);
+
+			window.displayedChildren += htmlArray.length;
+
+			if (window.displayedChildren < children.length)
+			{
+					$('#show-more').attr("disabled", false);
+			}
+			else
+			{
+					$('#show-more').attr("disabled", true);
+			}
 		}
 
 		function calcData(child) {
-			child.age = calculateAge(child.birthday);
-			child.genderString = child.gender == 'Female' ? 'girl' : 'boy';
-			child.waitingString = calculateWaiting(child.startDate);
-			child.ethnicBackgroundString = child.ethnicBackground && child.ethnicBackground.length > 0 
-				? child.ethnicBackground.join(', ')
-				: 'Unknown';
-			var birthDate = new Date(child.birthday);
-			birthDate.setDate(birthDate.getDate() + 1);
-			child.birthdayString = moment(birthDate).format('MMMM Do YYYY');
-			child.gradeString = calculateGrade(child.yearStartedKG);
-			child.nicknameString = child.nickname || child.fullName;
+			child.age = calculateAge(child.DOB);
+			child.ageString = child.age == 0 ? 'less than 1' : child.age;
+			child.yearsOldString = child.age == 0 ? 'year old' : 'years old';
+			child.genderString = child.Gender == 'Female' ? 'girl' : 'boy';
+			child.waitingString = calculateWaiting(child.DateStarted);
+			child.sponsorshipNeededString = parseInt(child.SponsorshipNeeded);
+			// child.ethnicBackgroundString = child.ethnicBackground && child.ethnicBackground.length > 0 
+			// 	? child.ethnicBackground.join(', ')
+			// 	: 'Unknown';
+			child.birthday = moment(child.DOB);
+			child.birthdayString = child.birthday.format('MMMM Do YYYY');
+			child.gradeString = calculateGrade(child.Grade);
+			child.nicknameString = child.Nickname || child.ChildName;
 			return child;
 		}
 
@@ -445,17 +598,34 @@
 			return days + ' days';
 		}
 
-		function calculateGrade(yearStartedKG) {
-			var year = new Date(yearStartedKG).getFullYear();
-			if (year < 1900) return 'N/A';
+		function calculateGrade(gradeObject) {
+			if (!gradeObject) return 'N/A';
+			return gradeObject.Value;
+		}
 
-			var gradeInt = moment().diff(yearStartedKG, 'years');
-			return gradeInt == 0 ? 'KG' :
-				gradeInt == 1 ? '1st grade' :
-				gradeInt == 2 ? '2nd grade' :
-				gradeInt == 3 ? '3rd grade' :
-				gradeInt > 12 ? 'Graduated' :
-				gradeInt + 'th grade';
+		function getDaysInMonth(year, month) {
+		  return new Date(year, month, 0).getDate();
+		}
+
+		function populateDaysFilter(numDays)
+		{
+			var selectedDay = parseInt($('#day-filter').find(":selected").val());
+			// console.log(selectedDay);
+			$('#day-filter').empty();
+
+			$('#day-filter').append($('<option>', {
+				value: '',
+				text: 'Day'
+			}));
+
+			for (var i = 1; i <= numDays; i++)
+			{
+				$('#day-filter').append($('<option>', {
+					value: i,
+					text: i,
+					selected: i === selectedDay
+				}));
+			}
 		}
 
 		function showModal(modalTemplate, child) {
