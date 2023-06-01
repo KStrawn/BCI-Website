@@ -18,7 +18,7 @@
 
 	//echo "unencodedData".$unencodedData;
 
-	$ftp_server='ftp://waws-prod-blu-395.ftp.azurewebsites.windows.net/site/wwwroot';
+	$ftp_server='ftp://test';
 
 	$ftp_user_name='BCDOwebsite\$BCDOwebsite';
 
