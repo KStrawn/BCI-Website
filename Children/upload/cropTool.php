@@ -202,13 +202,13 @@ if(isset($_POST["submit"])) {
 		
 	$paths='children';
 
-	$ftp_server='ftp://waws-prod-blu-395.ftp.azurewebsites.windows.net/site/wwwroot';
+	$ftp_server='ftp.blessingthechildren.org';
 
-	$ftp_user_name='BCDOwebsite\$BCDOwebsite';
+	$ftp_user_name='KStrawn';
 
-	$ftp_user_pass='XilPvjAaEovhfMbasEKckxAcZ3Z7x76hssSwxB4Sld13MaE0RHvwT6loHkyA';
+	$ftp_user_pass='Free22@@';
 
-$fp = fopen('http://bcdowebsite.azurewebsites.net/children/dolphins.jpg', 'r');
+$fp = fopen('http://blessingthechildren.org/children/dolphins.jpg', 'r');
 
 
 	$filep=$_FILES['userfile']['tmp_name'];
