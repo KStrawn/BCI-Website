@@ -11,6 +11,7 @@
 
 		<script type="text/javascript">
 
+			var oldPath = "";
 			var jcrop_api;
 			var old_image;
 			var child_name;
@@ -18,20 +19,10 @@
 
 			jQuery(function($) {
 
-				var $_GET = {};
+				var $_POST = <?php echo json_encode($_POST); ?>;
 
-				document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
-					function decode(s) {
-						return decodeURIComponent(s.split("+").join(" "));
-					}
-
-					$_GET[decode(arguments[1])] = decode(arguments[2]);
-				});
-
-				child_name = ($_GET["child_name"]);
+				child_name = ($_POST["child_name"]);
 				document.getElementById('childNameDiv').innerHTML ="<p>Child's Name: " + child_name + "</p>";
-
-				document.getElementById('fileinput').addEventListener('change', cropLoadedImage, false);
 			});
 
 			function setCropToImage() {
@@ -83,7 +74,7 @@
 
 			function uploadImage() {
 				if(lastImageData) {
-					var replyText = {name: child_name, imageData: lastImageData};
+					var replyText = {name: child_name, imageData: lastImageData, path: oldPath};
 
 					AjaxPostCall("testSave.php", replyText, function(data){
 						var imageName = data.substr(1);
@@ -129,39 +120,19 @@
 				jcrop_api = c;
 			}
 
-			function drawImage(img) {
+			function drawImage(src) {
 				// output the image
+				var img = new Image;
+				img.src = src;
 				old_image = img;
 				document.getElementById('output').innerHTML = "<img id='target2' src=" + img.src + ">";
 				setCropToImage();
 			}
 
-			function cropLoadedImage(evt) {
-				//Retrieve the first (and only!) File from the FileList object
-				var f = evt.target.files[0]; 
-
-				if (f) {
-					var reader = new FileReader();
-					reader.readAsDataURL(f);
-					reader.onload = function(e) { 
-						var img = new Image;
-						img.onload = function() {
-							drawImage(img);
-						}
-						img.src = event.target.result;
-					}
-				} else { 
-					alert("Failed to load file");
-				}
+			function setPath(path) {
+				drawImage(path);
+				oldPath = path;
 			}
-
-
-
-			function closeee() {
-				console.log("trying to close the window");
-				self.close();
-			}
-
 
 		</script>
 
@@ -178,12 +149,6 @@
 
 			</div>
 
-
-			<p>
-			Please specify a file:<br>
-			<input type="file" id="fileinput" /><br/>
-			</p>
-
 			<input type="button" id="button1" value="Crop Image" onclick="useImage();">
 			<input type="button" id="button2" value="Revert to Original" onclick="revertToOldImage();">
 			<input type="button" id="button3" value="Upload Image" onclick="uploadImage();">
@@ -192,59 +157,15 @@
 	</body>
 </html>
 
-<?
-$childname = $_GET["child_name"];
-print $childname;
+<?php
+$target_path = "uploads/";
 
-if(isset($_POST["submit"])) {
+$target_path = $target_path . basename( $_FILES['uploadedfile']['name']); 
 
-	set_time_limit(300);//for uploading big files
-		
-	$paths='children';
-
-	$ftp_server='ftp://waws-prod-blu-395.ftp.azurewebsites.windows.net/site/wwwroot';
-
-	$ftp_user_name='BCDOwebsite\$BCDOwebsite';
-
-	$ftp_user_pass='XilPvjAaEovhfMbasEKckxAcZ3Z7x76hssSwxB4Sld13MaE0RHvwT6loHkyA';
-
-$fp = fopen('http://bcdowebsite.azurewebsites.net/children/dolphins.jpg', 'r');
-
-
-	$filep=$_FILES['userfile']['tmp_name'];
-
-
-	// set up a connection to ftp server
-	$conn_id = ftp_connect($ftp_server);
-
-	// login with username and password
-	$login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
-
-	// check connection and login result
-	if ((!$conn_id) || (!$login_result)) {
-	       echo "FTP connection has encountered an error!";
-	       echo "Attempted to connect to $ftp_server for user $ftp_user_name....";
-	       exit;
-	   } else {
-	       echo "Connected to $ftp_server, for user $ftp_user_name".".....";
-	   }
-
-	// upload the file to the path specified
-	//$upload = ftp_put($conn_id, $paths.'/'.$childname.'.jpg', $filep, FTP_BINARY);
-
-if (ftp_fput($conn_id, $paths.'/werx.jpg', $fp, FTP_BINARY)) {
-    echo "Successfully uploaded $file\n";
-} else {
-    echo "There was a problem while uploading $file\n";
+if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
+    echo "<script>setPath('" . $target_path . "');</script>";
+} else{
+    echo "<p><strong>There was an error uploading the file, please try again!</strong></p>";
 }
 
-	// check the upload status
-	if (!$upload) {
-	       echo "FTP upload has encountered an error!";
-	   } else {
-	       echo "Uploaded file with name $childname.jpg to $ftp_server ";
-	   }
-
-	// close the FTP connection
-	ftp_close($conn_id);	
-}
+?>
