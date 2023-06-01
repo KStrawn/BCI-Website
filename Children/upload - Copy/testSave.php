@@ -18,11 +18,11 @@
 
 	//echo "unencodedData".$unencodedData;
 
-	$ftp_server='ftp://waws-prod-blu-395.ftp.azurewebsites.windows.net/site/wwwroot';
+	$ftp_server='ftp.blessingthechildren.org';
 
-	$ftp_user_name='BCDOwebsite\$BCDOwebsite';
+	$ftp_user_name='bciphoto';
 
-	$ftp_user_pass='XilPvjAaEovhfMbasEKckxAcZ3Z7x76hssSwxB4Sld13MaE0RHvwT6loHkyA';
+	$ftp_user_pass='Face1010';
 
 
 
