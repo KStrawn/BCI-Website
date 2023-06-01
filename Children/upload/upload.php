@@ -19,11 +19,11 @@ print $childname;
 		
 	$paths='children';
 
-	$ftp_server='ftp://test';
+	$ftp_server='ftp.blessingthechildren.org';
 
-	$ftp_user_name='BCDOwebsite\$BCDOwebsite';
+	$ftp_user_name='KStrawn';
 
-	$ftp_user_pass='XilPvjAaEovhfMbasEKckxAcZ3Z7x76hssSwxB4Sld13MaE0RHvwT6loHkyA';
+	$ftp_user_pass='Free22@@';
 
 $fp = fopen($childname, 'r');
 

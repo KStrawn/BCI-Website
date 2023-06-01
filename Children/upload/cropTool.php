@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
-		<title>Blessing the Children Cropping Tool v2</title>
+		<title>Blessing the Children Cropping Tool</title>
 		<script src="js/jquery.min.js" type="text/javascript"></script>
 		<script src="js/jquery.Jcrop.js" type="text/javascript"></script>
 		<script src="js/jquery.color.js" type="text/javascript"></script>
@@ -172,7 +172,7 @@
 			<div class="article">
 
 				<h1>Blessing the Children</h1>
-				<h2>Image Cropping Tool v2</h2>
+				<h2>Image Cropping Tool</h2>
 				<div id="childNameDiv" ></div>
 				<div id="output" ></div>
 
@@ -202,13 +202,13 @@ if(isset($_POST["submit"])) {
 		
 	$paths='children';
 
-	$ftp_server='ftp://test';
+	$ftp_server='ftp.blessingthechildren.org';
 
-	$ftp_user_name='BCDOwebsite\$BCDOwebsite';
+	$ftp_user_name='KStrawn';
 
-	$ftp_user_pass='XilPvjAaEovhfMbasEKckxAcZ3Z7x76hssSwxB4Sld13MaE0RHvwT6loHkyA';
+	$ftp_user_pass='Free22@@';
 
-$fp = fopen('http://bcdowebsite.azurewebsites.net/children/dolphins.jpg', 'r');
+$fp = fopen('http://blessingthechildren.org/children/dolphins.jpg', 'r');
 
 
 	$filep=$_FILES['userfile']['tmp_name'];
