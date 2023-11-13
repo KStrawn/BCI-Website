@@ -1,0 +1,32 @@
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
+	<title>Blessing the Children Cropping Tool</title>
+</head>
+<body>
+
+	<form enctype="multipart/form-data" action="uploader.php" method="POST">
+	Child's Name: <input id="name" type="text" name="child_name"> <br />
+	Choose a file to upload: <input name="uploadedfile" type="file" /> <br />
+	<input type="submit" value="Upload File" />
+	</form>
+
+	<script>
+		var $_GET = {};
+
+		document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+			function decode(s) {
+				return decodeURIComponent(s.split("+").join(" "));
+			}
+
+			$_GET[decode(arguments[1])] = decode(arguments[2]);
+		});
+
+		var child_name = ($_GET["child_name"]);
+
+		document.getElementById('name').value = child_name;
+		document.getElementById('name').readOnly = true;
+	</script>	
+</body>
+</html>
+
